@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Sullair Price Calculator</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; background: #f0f2f5; color: #1a1a2e; -webkit-tap-highlight-color: transparent; }
+
+/* ── TOP BAR ── */
+.top-bar { position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+.app-header { background: #1F3864; padding: 10px 14px 8px; display: flex; justify-content: space-between; align-items: center; }
+.app-title  { color: #fff; font-size: 18px; font-weight: 800; line-height: 1.1; }
+.app-title small { display: block; color: #90c0ff; font-size: 11px; font-weight: 400; }
+.margin-row { display: flex; align-items: center; gap: 5px; }
+.margin-row label { color: #cde; font-size: 12px; font-weight: 600; white-space: nowrap; }
+.margin-row input { width: 58px; padding: 7px 6px; border-radius: 8px; border: 2px solid #f0c000; background: #fff59d; color: #333; font-size: 15px; font-weight: 800; text-align: center; outline: none; }
+.margin-row .pct { color: #cde; font-size: 13px; font-weight: 700; }
+
+/* ── PRODUCT BAR ── */
+.product-bar { display: flex; gap: 6px; padding: 7px 10px; background: #0f2040; }
+.prod-pill { flex: 1; padding: 7px 4px; border-radius: 20px; font-size: 12px; font-weight: 700; cursor: pointer; border: 2px solid transparent; text-align: center; white-space: nowrap; user-select: none; transition: border-color 0.1s; }
+.prod-pill.active { border-color: #fff !important; color: #fff !important; }
+.prod-comp  { background: #1e4080; color: #90c0ff; }
+.prod-dryer { background: #0d5050; color: #80e8e0; }
+.prod-regen { background: #4a2060; color: #d0a0f8; }
+
+/* ── SERIES BAR ── */
+.series-bar { display: flex; gap: 6px; padding: 8px 10px; overflow-x: auto; background: #16305a; scrollbar-width: none; min-height: 38px; }
+.series-bar::-webkit-scrollbar { display: none; }
+.pill { padding: 6px 13px; border-radius: 20px; font-size: 12px; font-weight: 700; cursor: pointer; border: 2px solid transparent; white-space: nowrap; user-select: none; }
+.pill.active { border-color: #fff !important; color: #fff !important; }
+
+/* compressor pills */
+.pill-ls      { background: #2c5282; color: #bee3f8; }
+.pill-ls20t   { background: #22543d; color: #c6f6d5; }
+.pill-ls20ts  { background: #276749; color: #9ae6b4; }
+.pill-senergy { background: #7b341e; color: #fbd38d; }
+.pill-es6     { background: #553c9a; color: #e9d8fd; }
+.pill-shoptek { background: #744210; color: #fefcbf; }
+.pill-sn      { background: #1a365d; color: #bee3f8; }
+.pill-ts      { background: #2d3748; color: #e2e8f0; }
+.pill-ts32s   { background: #521b41; color: #fed7e2; }
+.pill-v320ts  { background: #7b341e; color: #ffecd2; }
+
+/* dryer pills */
+.pill-src   { background: #145050; color: #80e0d0; }
+.pill-srd   { background: #143a60; color: #80c8f0; }
+.pill-srv   { background: #3a1870; color: #c8a8f0; }
+.pill-srht  { background: #601800; color: #ffc080; }
+.pill-srp   { background: #104520; color: #80e090; }
+.pill-sr480 { background: #1a3800; color: #a8d840; }
+.pill-srn   { background: #263050; color: #a0b8e8; }
+
+/* ── BREADCRUMB ── */
+.breadcrumb { background: #1a2a50; padding: 5px 12px; display: flex; gap: 3px; align-items: center; flex-wrap: wrap; min-height: 28px; }
+.bc { color: #90c0ff; font-size: 12px; cursor: pointer; padding: 2px 5px; border-radius: 4px; }
+.bc:hover { background: rgba(255,255,255,0.12); }
+.bc.current { color: #fff; font-weight: 700; cursor: default; }
+.bc-sep { color: #4a6a9a; font-size: 11px; }
+
+/* ── CONTENT ── */
+.content { padding: 12px; }
+.prompt { text-align: center; padding: 40px 20px; color: #999; }
+.prompt strong { display: block; font-size: 17px; color: #555; margin-bottom: 6px; }
+
+/* ── PRODUCT TYPE PICKER ── */
+.prod-picker-title { font-size: 14px; font-weight: 700; color: #888; text-align: center; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+.prod-card { background: #fff; border-radius: 14px; padding: 18px 16px; display: flex; align-items: center; gap: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.12); cursor: pointer; border: 3px solid transparent; user-select: none; margin-bottom: 10px; }
+.prod-card:active { background: #f0f8ff; border-color: #3182ce; }
+.prod-card.disabled { opacity: 0.38; cursor: not-allowed; }
+.prod-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 26px; flex-shrink: 0; }
+.prod-icon-comp  { background: #dbeafe; }
+.prod-icon-dryer { background: #ccfbf1; }
+.prod-icon-regen { background: #ede9fe; }
+.prod-card-title { font-size: 17px; font-weight: 800; color: #1a1a2e; }
+.prod-card-sub   { font-size: 12px; color: #888; margin-top: 3px; }
+.prod-card-arrow { color: #bbb; font-size: 22px; margin-left: auto; padding-left: 8px; }
+
+/* ── STEP LABEL ── */
+.step-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #888; margin-bottom: 8px; padding: 0 2px; }
+
+/* ── MODEL BUTTONS ── */
+.model-list { display: flex; flex-direction: column; gap: 7px; }
+.model-btn { background: #fff; border-radius: 10px; padding: 13px 14px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 1px 3px rgba(0,0,0,0.1); cursor: pointer; border: 2px solid transparent; user-select: none; }
+.model-btn:active { border-color: #3182ce; background: #ebf8ff; }
+.model-left .model-name { font-family: monospace; font-size: 16px; font-weight: 800; color: #1a1a2e; }
+.model-left .model-sub  { font-size: 12px; color: #777; margin-top: 2px; }
+.model-tags { display: flex; gap: 5px; align-items: center; }
+.tag { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 6px; white-space: nowrap; }
+.tag-std { background: #edf2f7; color: #4a5568; }
+.tag-s   { background: #d6eaf8; color: #1a5276; }
+.tag-v   { background: #d5f5e3; color: #1a5e39; }
+.tag-hi  { background: #fdebd0; color: #784212; }
+.tag-cyc { background: #d1fae5; color: #065f46; }
+.tag-non { background: #fef3c7; color: #92400e; }
+.tag-var { background: #ede9fe; color: #5b21b6; }
+.tag-hot { background: #fee2e2; color: #991b1b; }
+.model-arrow { color: #bbb; font-size: 18px; margin-left: 6px; }
+
+/* ── PRESSURE / VOLTAGE BUTTONS ── */
+.pres-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px; }
+.pres-btn { background: #fff; border-radius: 10px; padding: 16px 8px; text-align: center; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 2px solid transparent; user-select: none; }
+.pres-btn:active { border-color: #3182ce; background: #ebf8ff; }
+.pres-psi  { font-size: 19px; font-weight: 800; color: #2c5282; }
+.pres-cfm  { font-size: 11px; color: #888; margin-top: 4px; }
+.volt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 8px; }
+.volt-btn  { background: #fff; border-radius: 10px; padding: 16px 8px; text-align: center; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 2px solid transparent; user-select: none; }
+.volt-btn:active { border-color: #0d9488; background: #f0fdfa; }
+.volt-v    { font-size: 22px; font-weight: 800; color: #0f766e; }
+.volt-list { font-size: 11px; color: #888; margin-top: 4px; }
+
+/* ── RESULT CARD ── */
+.result-wrap { margin-top: 4px; }
+.result-card { background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 3px 14px rgba(0,0,0,0.15); }
+.r-header { padding: 14px 16px; }
+.r-code { font-family: monospace; font-size: 24px; font-weight: 900; color: #fff; letter-spacing: 0.5px; }
+.r-sub  { font-size: 13px; color: rgba(255,255,255,0.72); margin-top: 4px; }
+.r-prices { display: flex; border-top: 1px solid #f0f0f0; }
+.r-col { flex: 1; padding: 16px 8px; text-align: center; }
+.r-col + .r-col { border-left: 1px solid #f0f0f0; }
+.r-lbl { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; color: #aaa; margin-bottom: 5px; }
+.r-amt { font-size: 16px; font-weight: 700; }
+.amt-list { color: #777; }
+.amt-cost { color: #7a4000; }
+.amt-sell { font-size: 26px; font-weight: 900; color: #1a6b1a; line-height: 1; }
+.r-footer { background: #f8f9fa; padding: 9px 16px; font-size: 11px; color: #999; display: flex; justify-content: space-between; align-items: center; }
+
+/* compressor result header gradients */
+.hdr-ls      { background: linear-gradient(135deg,#2c5282,#1a365d); }
+.hdr-ls20t   { background: linear-gradient(135deg,#276749,#22543d); }
+.hdr-ls20ts  { background: linear-gradient(135deg,#2f855a,#276749); }
+.hdr-senergy { background: linear-gradient(135deg,#c05621,#7b341e); }
+.hdr-es6     { background: linear-gradient(135deg,#6b46c1,#553c9a); }
+.hdr-shoptek { background: linear-gradient(135deg,#b7791f,#744210); }
+.hdr-sn      { background: linear-gradient(135deg,#2b6cb0,#1a365d); }
+.hdr-ts      { background: linear-gradient(135deg,#4a5568,#2d3748); }
+.hdr-ts32s   { background: linear-gradient(135deg,#805ad5,#521b41); }
+.hdr-v320ts  { background: linear-gradient(135deg,#c05621,#7b341e); }
+
+/* dryer result header gradients */
+.hdr-src   { background: linear-gradient(135deg,#1a6060,#0d3a3a); }
+.hdr-srd   { background: linear-gradient(135deg,#1a5080,#0d3050); }
+.hdr-srv   { background: linear-gradient(135deg,#5a2890,#3a1860); }
+.hdr-srht  { background: linear-gradient(135deg,#b02800,#701800); }
+.hdr-srp   { background: linear-gradient(135deg,#1a7030,#104520); }
+.hdr-sr480 { background: linear-gradient(135deg,#4a7800,#2a4800); }
+.hdr-srn   { background: linear-gradient(135deg,#3a5878,#263050); }
+
+/* regen dryer pills */
+.pill-dmd { background: #3b1a6a; color: #d0a0f8; }
+.pill-sa  { background: #1a1a6a; color: #a0b0f8; }
+.pill-sah { background: #5a1a1a; color: #f8a0a0; }
+.pill-sav { background: #1a4a2a; color: #80e0a0; }
+
+/* regen result header gradients */
+.hdr-dmd { background: linear-gradient(135deg,#5a2890,#3b1a6a); }
+.hdr-sa  { background: linear-gradient(135deg,#2a3898,#1a1a6a); }
+.hdr-sah { background: linear-gradient(135deg,#901a1a,#5a1010); }
+.hdr-sav { background: linear-gradient(135deg,#1a7040,#0d4028); }
+
+/* regen tags */
+.tag-heatless { background: #e0e7ff; color: #3730a3; }
+.tag-heated   { background: #fee2e2; color: #991b1b; }
+.tag-varcy    { background: #d1fae5; color: #065f46; }
+.tag-modular  { background: #ede9fe; color: #5b21b6; }
+
+/* ── FOOTER LEGEND ── */
+.legend { background: #fff; border-radius: 10px; margin-top: 12px; padding: 14px; text-align: center; }
+.legend-title { font-size: 11px; font-weight: 700; text-transform: uppercase; color: #888; letter-spacing: 0.4px; margin-bottom: 8px; }
+.bar-ref { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; }
+.bar-chip { background: #eef2ff; border: 1px solid #c3d0f5; border-radius: 6px; padding: 3px 10px; font-size: 11px; font-weight: 600; color: #3a52a0; }
+.legend p { font-size: 11px; color: #999; margin-top: 8px; line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="app-header">
+    <div class="app-title">
+      Sullair Pricing
+      <small>EXWORKS Michigan City, IN</small>
+    </div>
+    <div class="margin-row">
+      <label>Margin</label>
+      <input type="number" id="marginInput" value="15" min="0" max="99" step="1" oninput="updateSell()">
+      <span class="pct">%</span>
+    </div>
+  </div>
+  <div class="product-bar" id="productBar"></div>
+  <div class="breadcrumb" id="breadcrumb"></div>
+  <div class="series-bar" id="seriesBar"></div>
+</div>
+
+<div class="content" id="content"></div>
+
+<script>
+// ============================================================
+// COMPRESSOR DATA  [series, orderCode, hp, psi, cfm, listPrice]
+// ============================================================
+const RAW = [
+  ["LS Series","LS9008",125,"110 psi",634,140943],
+  ["LS Series","LS9009",125,"125 psi",594,140943],
+  ["LS Series","LS9010",125,"150 psi",523,140943],
+  ["LS Series","LS9012",125,"175 psi",469,142774],
+  ["LS Series","LS9008S",125,"110 psi",634,163606],
+  ["LS Series","LS9009S",125,"125 psi",594,163606],
+  ["LS Series","LS9010S",125,"150 psi",523,163606],
+  ["LS Series","LS9012S",125,"175 psi",469,165438],
+  ["LS Series","LS9008V",125,"110 psi",625,184554],
+  ["LS Series","LS9009V",125,"125 psi",594,184554],
+  ["LS Series","LS9010V",125,"150 psi",512,184554],
+  ["LS Series","LS9012V",125,"175 psi",459,186503],
+  ["LS Series","LS11008",150,"110 psi",763,167727],
+  ["LS Series","LS11009",150,"125 psi",702,167727],
+  ["LS Series","LS11010",150,"150 psi",622,167727],
+  ["LS Series","LS11012",150,"175 psi",569,169559],
+  ["LS Series","LS11008S",150,"110 psi",763,185470],
+  ["LS Series","LS11009S",150,"125 psi",702,185470],
+  ["LS Series","LS11010S",150,"150 psi",622,185470],
+  ["LS Series","LS11012S",150,"175 psi",569,187302],
+  ["LS Series","LS11008V",150,"110 psi",743,209976],
+  ["LS Series","LS11009V",150,"125 psi",702,209976],
+  ["LS Series","LS11010V",150,"150 psi",617,209976],
+  ["LS Series","LS11012V",150,"175 psi",559,211808],
+  ["LS Series","LS16007",200,"100 psi",1070,203107],
+  ["LS Series","LS16008",200,"110 psi",1025,203107],
+  ["LS Series","LS16009",200,"125 psi",985,203107],
+  ["LS Series","LS16010",200,"150 psi",875,203107],
+  ["LS Series","LS16014",200,"200 psi",734,206994],
+  ["LS Series","LS16007S",200,"100 psi",1070,210892],
+  ["LS Series","LS16008S",200,"110 psi",1025,210892],
+  ["LS Series","LS16009S",200,"125 psi",985,210892],
+  ["LS Series","LS16010S",200,"150 psi",875,210892],
+  ["LS Series","LS16014S",200,"200 psi",734,214555],
+  ["LS Series","LS16007V",200,"100 psi",1070,259094],
+  ["LS Series","LS16008V",200,"110 psi",1025,259094],
+  ["LS Series","LS16009V",200,"125 psi",985,259094],
+  ["LS Series","LS16010V",200,"150 psi",833,259094],
+  ["LS Series","LS16014V",200,"200 psi",729,262523],
+  ["LS Series","LS19007",250,"100 psi",1360,245238],
+  ["LS Series","LS19008",250,"110 psi",null,245238],
+  ["LS Series","LS19009",250,"125 psi",1240,245238],
+  ["LS Series","LS19010",250,"150 psi",null,245238],
+  ["LS Series","LS19014",250,"200 psi",960,249040],
+  ["LS Series","LS19007S",250,"100 psi",1360,259552],
+  ["LS Series","LS19008S",250,"110 psi",1300,259552],
+  ["LS Series","LS19009S",250,"125 psi",1240,259552],
+  ["LS Series","LS19010S",250,"150 psi",1060,259552],
+  ["LS Series","LS19014S",250,"200 psi",960,263354],
+  ["LS Series","LS19007V",250,"100 psi",1300,339171],
+  ["LS Series","LS19008V",250,"110 psi",1250,339171],
+  ["LS Series","LS19009V",250,"125 psi",1200,339171],
+  ["LS Series","LS19010V",250,"150 psi",1090,339171],
+  ["LS Series","LS19014V",250,"200 psi",994,342749],
+  ["LS Series","LS22007",300,"100 psi",1620,287732],
+  ["LS Series","LS22008",300,"110 psi",1530,287732],
+  ["LS Series","LS22009",300,"125 psi",1440,287732],
+  ["LS Series","LS22010",300,"150 psi",1285,287732],
+  ["LS Series","LS22014",300,"200 psi",1150,291534],
+  ["LS Series","LS22007S",300,"100 psi",1620,306848],
+  ["LS Series","LS22008S",300,"110 psi",1530,306848],
+  ["LS Series","LS22009S",300,"125 psi",1440,306848],
+  ["LS Series","LS22010S",300,"150 psi",1285,306848],
+  ["LS Series","LS22014S",300,"200 psi",1150,310991],
+  ["LS Series","LS22007V",300,"100 psi",1620,380099],
+  ["LS Series","LS22008V",300,"110 psi",1530,380099],
+  ["LS Series","LS22009V",300,"125 psi",1440,380099],
+  ["LS Series","LS22010V",300,"150 psi",1285,380099],
+  ["LS Series","LS22014V",300,"200 psi",1120,383784],
+  ["LS Series","LS26007",350,"100 psi",1875,331673],
+  ["LS Series","LS26008",350,"110 psi",1800,331673],
+  ["LS Series","LS26009",350,"125 psi",1660,331673],
+  ["LS Series","LS26010",350,"150 psi",1500,331673],
+  ["LS Series","LS26014",350,"200 psi",1270,335593],
+  ["LS Series","LS26007S",350,"100 psi",1875,355604],
+  ["LS Series","LS26008S",350,"110 psi",1800,355604],
+  ["LS Series","LS26009S",350,"125 psi",1660,355604],
+  ["LS Series","LS26010S",350,"150 psi",1500,355604],
+  ["LS Series","LS26014S",350,"200 psi",1270,359523],
+  ["LS Series","LS26007V",350,"100 psi",1875,425500],
+  ["LS Series","LS26008V",350,"110 psi",1800,425500],
+  ["LS Series","LS26009V",350,"125 psi",1660,425500],
+  ["LS Series","LS26010V",350,"150 psi",1500,425500],
+  ["LS Series","LS26014V",350,"200 psi",1300,429302],
+  ["LS20T (Hi-P)","LS20T-200",200,"225 psi",630,374800],
+  ["LS20T (Hi-P)","LS20T-200",200,"250 psi",500,374800],
+  ["LS20T (Hi-P)","LS20T-200",200,"350 psi",500,374800],
+  ["LS20T (Hi-P)","LS20T-250",250,"250 psi",750,416370],
+  ["LS20T (Hi-P)","LS20T-250",250,"350 psi",630,416370],
+  ["LS20T (Hi-P)","LS20T-250",250,"500 psi",null,423453],
+  ["LS20T (Hi-P)","LS20T-300",300,"350 psi",750,423902],
+  ["LS20T (Hi-P)","LS20T-300",300,"500 psi",null,430975],
+  ["LS20T (Hi-P)","LS20T-350",350,"500 psi",750,436486],
+  ["LS20TS (Hi-P)","LS20TS-300",300,"225 psi",null,463899],
+  ["LS20TS (Hi-P)","LS20TS-300",300,"325 psi",null,463899],
+  ["LS20TS (Hi-P)","LS20TS-350",350,"225 psi",null,474460],
+  ["LS20TS (Hi-P)","LS20TS-350",350,"300 psi",null,474460],
+  ["LS20TS (Hi-P)","LS20TS-350",350,"350 psi",null,474460],
+  ["LS20TS (Hi-P)","LS20TS-400",400,"225 psi",null,540853],
+  ["LS20TS (Hi-P)","LS20TS-400",400,"300 psi",null,540853],
+  ["LS20TS (Hi-P)","LS20TS-400",400,"350 psi",null,540853],
+  ["LS20TS (Hi-P)","LS20TS-450",450,"225 psi",null,639165],
+  ["LS20TS (Hi-P)","LS20TS-450",450,"300 psi",null,639165],
+  ["LS20TS (Hi-P)","LS20TS-450",450,"350 psi",null,639165],
+  ["LS20TS (Hi-P)","LS20TS-500",500,"300 psi",null,653203],
+  ["LS20TS (Hi-P)","LS20TS-500",500,"350 psi",null,653203],
+  ["S-energy","1100e",15,"100 psi",null,32002],
+  ["S-energy","1100e",15,"125 psi",null,32002],
+  ["S-energy","1100e",15,"175 psi",null,35002],
+  ["S-energy","1100eV",15,"100 psi",null,40111],
+  ["S-energy","1100eV",15,"125 psi",null,40111],
+  ["S-energy","1100eV",15,"150 psi",null,40111],
+  ["S-energy","1100eV",15,"175 psi",null,43068],
+  ["S-energy","1500e",20,"125 psi",null,34758],
+  ["S-energy","1500e",20,"175 psi",null,37599],
+  ["S-energy","1500eV",20,"100 psi",null,43376],
+  ["S-energy","1500eV",20,"125 psi",null,43376],
+  ["S-energy","1500eV",20,"150 psi",null,43376],
+  ["S-energy","1500eV",20,"175 psi",null,46238],
+  ["S-energy","1800",25,"100 psi",null,42051],
+  ["S-energy","1800",25,"125 psi",null,42051],
+  ["S-energy","1800",25,"150 psi",null,42051],
+  ["S-energy","1800",25,"175 psi",null,44860],
+  ["S-energy","1800e",25,"125 psi",null,36390],
+  ["S-energy","1800e",25,"175 psi",null,39295],
+  ["S-energy","1800eV",25,"100 psi",null,47202],
+  ["S-energy","1800eV",25,"125 psi",null,47202],
+  ["S-energy","1800eV",25,"150 psi",null,47202],
+  ["S-energy","1800eV",25,"175 psi",null,50054],
+  ["S-energy","1800V",25,"100 psi",null,56159],
+  ["S-energy","1800V",25,"125 psi",null,56159],
+  ["S-energy","1800V",25,"150 psi",null,56159],
+  ["S-energy","1800V",25,"175 psi",null,59032],
+  ["S-energy","2200",30,"100 psi",null,44584],
+  ["S-energy","2200",30,"125 psi",null,44584],
+  ["S-energy","2200",30,"150 psi",null,44584],
+  ["S-energy","2200",30,"175 psi",null,47351],
+  ["S-energy","2200V",30,"100 psi",null,61767],
+  ["S-energy","2200V",30,"125 psi",null,61767],
+  ["S-energy","2200V",30,"150 psi",null,61767],
+  ["S-energy","2200V",30,"175 psi",null,64618],
+  ["S-energy","3000",40,"125 psi",null,48941],
+  ["S-energy","3000",40,"150 psi",null,48941],
+  ["S-energy","3000",40,"175 psi",null,51739],
+  ["S-energy","3000PB",40,"100 psi",null,53626],
+  ["S-energy","3000PB",40,"125 psi",null,53626],
+  ["S-energy","3000PB",40,"150 psi",null,53626],
+  ["S-energy","3000PVB",40,"100 psi",null,74985],
+  ["S-energy","3000PVB",40,"125 psi",null,74985],
+  ["S-energy","3000PVB",40,"150 psi",null,74985],
+  ["S-energy","3000V",40,"125 psi",null,65296],
+  ["S-energy","3000V",40,"150 psi",null,65296],
+  ["S-energy","3000V",40,"175 psi",null,68148],
+  ["S-energy","3700B",50,"100 psi",null,58004],
+  ["S-energy","3700B",50,"125 psi",null,58004],
+  ["S-energy","3700B",50,"150 psi",null,58004],
+  ["S-energy","3700B",50,"175 psi",null,60855],
+  ["S-energy","3700VB",50,"100 psi",null,83528],
+  ["S-energy","3700VB",50,"125 psi",null,83528],
+  ["S-energy","3700VB",50,"150 psi",null,83528],
+  ["S-energy","3700VB",50,"175 psi",null,86263],
+  ["S-energy","4500B",60,"125 psi",null,65296],
+  ["S-energy","4500B",60,"150 psi",null,65296],
+  ["S-energy","4500B",60,"175 psi",null,68148],
+  ["S-energy","4500VB",60,"125 psi",null,94584],
+  ["S-energy","4500VB",60,"150 psi",null,94584],
+  ["S-energy","4500VB",60,"175 psi",null,97436],
+  ["ES6","ES6-5H",5,"125 psi",17,19006],
+  ["ES6","ES6-5XH",5,"175 psi",13,19006],
+  ["ES6","ES6-7.5H",7.5,"125 psi",28,20151],
+  ["ES6","ES6-7.5XH",7.5,"175 psi",20,20151],
+  ["ES6","ES6-10H",10,"125 psi",36,22822],
+  ["ES6","ES6-10XH",10,"175 psi",30,22822],
+  ["ShopTek","ST4",5,"150 psi",16.9,13054],
+  ["ShopTek","ST5",7.5,"150 psi",25.3,14017],
+  ["ShopTek","ST7",10,"125 psi",34.2,15708],
+  ["ShopTek","ST11",15,"125 psi",64,18608],
+  ["ShopTek","ST15",20,"125 psi",78,24889],
+  ["ShopTek","ST18",25,"115 psi",103,31405],
+  ["ShopTek","ST22",30,"115 psi",126,35032],
+  ["ShopTek","ST30",40,"115 psi",168,39858],
+  ["ShopTek","ST37",50,"115 psi",222,47113],
+  ["ShopTek","ST45",60,"125 psi",278,55319],
+  ["ShopTek","ST55",75,"125 psi",341,72225],
+  ["ShopTek","ST75",100,"125 psi",438,82615],
+  ["SN","SN5507",75,"100 psi",null,87077],
+  ["SN","SN5508",75,"110 psi",null,87077],
+  ["SN","SN5509",75,"125 psi",null,87077],
+  ["SN","SN5510",75,"150 psi",null,87077],
+  ["SN","SN5512",75,"175 psi",null,90073],
+  ["SN","SN5507S",75,"100 psi",null,95134],
+  ["SN","SN5509S",75,"125 psi",null,95134],
+  ["SN","SN5507V",75,"100 psi",null,107782],
+  ["SN","SN5508V",75,"110 psi",null,107782],
+  ["SN","SN5509V",75,"125 psi",null,107782],
+  ["SN","SN5510V",75,"150 psi",null,107782],
+  ["SN","SN5512V",75,"175 psi",null,110542],
+  ["SN","SN7507",100,"100 psi",null,95134],
+  ["SN","SN7508",100,"110 psi",null,95134],
+  ["SN","SN7509",100,"125 psi",null,95134],
+  ["SN","SN7510",100,"150 psi",null,95134],
+  ["SN","SN7512",100,"175 psi",null,98119],
+  ["SN","SN7507S",100,"100 psi",null,106519],
+  ["SN","SN7508S",100,"110 psi",null,106519],
+  ["SN","SN7509S",100,"125 psi",null,106519],
+  ["SN","SN7510S",100,"150 psi",null,106519],
+  ["SN","SN7512S",100,"175 psi",null,107664],
+  ["SN","SN7507V",100,"100 psi",null,135965],
+  ["SN","SN7508V",100,"110 psi",null,135965],
+  ["SN","SN7509V",100,"125 psi",null,135965],
+  ["SN","SN7510V",100,"150 psi",null,135965],
+  ["SN","SN7512V",100,"175 psi",null,138491],
+  ["TS","TS190-07",250,"100 psi",null,306965],
+  ["TS","TS190-08",250,"110 psi",null,306965],
+  ["TS","TS190-09",250,"125 psi",null,306965],
+  ["TS","TS190-10",250,"150 psi",null,306965],
+  ["TS","TS190-14",250,"200 psi",null,310767],
+  ["TS","TS190S-07",250,"100 psi",null,331450],
+  ["TS","TS190S-08",250,"110 psi",null,331450],
+  ["TS","TS190S-09",250,"125 psi",null,331450],
+  ["TS","TS190S-10",250,"150 psi",null,331450],
+  ["TS","TS190S-14",250,"200 psi",null,335252],
+  ["TS","TS190V-07",250,"100 psi",null,398768],
+  ["TS","TS190V-08",250,"110 psi",null,398768],
+  ["TS","TS190V-09",250,"125 psi",null,398768],
+  ["TS","TS190V-10",250,"150 psi",null,398768],
+  ["TS","TS190V-14",250,"200 psi",null,402688],
+  ["TS","TS220-07",300,"100 psi",null,340513],
+  ["TS","TS220-08",300,"110 psi",null,340513],
+  ["TS","TS220-09",300,"125 psi",null,340513],
+  ["TS","TS220-10",300,"150 psi",null,340513],
+  ["TS","TS220-14",300,"200 psi",null,344315],
+  ["TS","TS220S-07",300,"100 psi",null,365114],
+  ["TS","TS220S-08",300,"110 psi",null,365114],
+  ["TS","TS220S-09",300,"125 psi",null,365114],
+  ["TS","TS220S-10",300,"150 psi",null,365114],
+  ["TS","TS220S-14",300,"200 psi",null,368916],
+  ["TS","TS220V-07",300,"100 psi",null,445852],
+  ["TS","TS220V-08",300,"110 psi",null,445852],
+  ["TS","TS220V-09",300,"125 psi",null,445852],
+  ["TS","TS220V-10",300,"150 psi",null,445852],
+  ["TS","TS220V-14",300,"200 psi",null,449761],
+  ["TS","TS260-07",350,"100 psi",null,373049],
+  ["TS","TS260-08",350,"110 psi",null,373049],
+  ["TS","TS260-09",350,"125 psi",null,373049],
+  ["TS","TS260-10",350,"150 psi",null,373049],
+  ["TS","TS260-14",350,"200 psi",null,376851],
+  ["TS","TS260S-07",350,"100 psi",null,397650],
+  ["TS","TS260S-08",350,"110 psi",null,397650],
+  ["TS","TS260S-09",350,"125 psi",null,397650],
+  ["TS","TS260S-10",350,"150 psi",null,397650],
+  ["TS","TS260S-14",350,"200 psi",null,401452],
+  ["TS","TS260V-07",350,"100 psi",null,483649],
+  ["TS","TS260V-08",350,"110 psi",null,483649],
+  ["TS","TS260V-09",350,"125 psi",null,483649],
+  ["TS","TS260V-10",350,"150 psi",null,483649],
+  ["TS","TS260V-14",350,"200 psi",null,487451],
+  ["TS32S","TS32S-400H",400,"125 psi",1943,482656],
+  ["TS32S","TS32S-400HH",400,"150 psi",1681,482656],
+  ["TS32S","TS32S-400L",400,"100 psi",2220,482656],
+  ["TS32S","TS32S-450H",450,"125 psi",2135,530185],
+  ["TS32S","TS32S-450HH",450,"150 psi",1943,530185],
+  ["TS32S","TS32S-450L",450,"100 psi",2350,530185],
+  ["TS32S","TS32S-500H",500,"125 psi",2350,685560],
+  ["TS32S","TS32S-500HH",500,"150 psi",2220,685560],
+  ["TS32S","TS32S-500L",500,"100 psi",2530,685560],
+  ["TS32S","TS32S-600H",600,"125 psi",2700,803752],
+  ["TS32S","TS32S-600HH",600,"150 psi",2530,803752],
+  ["TS32S","TS32S-600L",600,"100 psi",3000,803752],
+  ["V320TS","V320TS-400H",400,"125 psi",1870,656242],
+  ["V320TS","V320TS-400HH",400,"150 psi",1695,656242],
+  ["V320TS","V320TS-400L",400,"100 psi",2075,656242],
+  ["V320TS","V320TS-450H",450,"125 psi",2100,680617],
+  ["V320TS","V320TS-450HH",450,"150 psi",1900,680617],
+  ["V320TS","V320TS-450L",450,"100 psi",2310,680617],
+];
+
+// ============================================================
+// DRYER DATA  [series, modelCode, cfm_str, voltage, listPrice]
+// ============================================================
+const RAW_DRY = [
+  // SRC — Sullimax Drain Cycling
+  ["SRC","SRC30","30 CFM","115V",4535],
+  ["SRC","SRC300","300 CFM","230V",14997],
+  ["SRC","SRC400","400 CFM","230V",17701],
+  ["SRC","SRC400","400 CFM","460V",18523],
+  // SRD — Cycling (R513A refrigerant)
+  ["SRD","SRD75","75 SCFM","115V",5013],
+  ["SRD","SRD75","75 SCFM","230V",5013],
+  ["SRD","SRD100","100 SCFM","115V",6178],
+  ["SRD","SRD100","100 SCFM","230V",6178],
+  ["SRD","SRD125","125 SCFM","115V",7228],
+  ["SRD","SRD125","125 SCFM","230V",7228],
+  ["SRD","SRD150","150 SCFM","115V",8040],
+  ["SRD","SRD150","150 SCFM","230V",8040],
+  ["SRD","SRD175","175 SCFM","115V",8622],
+  ["SRD","SRD175","175 SCFM","230V",8622],
+  ["SRD","SRD200","200 SCFM","230V",9371],
+  ["SRD","SRD250","250 SCFM","230V",10598],
+  ["SRD","SRD325","325 SCFM","460V",14092],
+  ["SRD","SRD325","325 SCFM","575V",15132],
+  ["SRD","SRD400","400 SCFM","460V",16131],
+  ["SRD","SRD400","400 SCFM","575V",17160],
+  ["SRD","SRD500","500 SCFM","460V",17691],
+  ["SRD","SRD500","500 SCFM","575V",18731],
+  ["SRD","SRD700","700 SCFM","460V",23868],
+  ["SRD","SRD700","700 SCFM","575V",25158],
+  ["SRD","SRD800","800 SCFM","460V",27935],
+  ["SRD","SRD800","800 SCFM","575V",29224],
+  ["SRD","SRD1000","1000 SCFM","460V",34684],
+  ["SRD","SRD1000","1000 SCFM","575V",35974],
+  ["SRD","SRD1400","1400 SCFM","460V",44232],
+  ["SRD","SRD1400","1400 SCFM","575V",45802],
+  ["SRD","SRD1600","1600 SCFM","460V",51220],
+  ["SRD","SRD1600","1600 SCFM","575V",52791],
+  ["SRD","SRD2000","2000 SCFM","460V",59405],
+  ["SRD","SRD2000","2000 SCFM","575V",61485],
+  ["SRD","SRD2400","2400 SCFM","460V",66394],
+  ["SRD","SRD2400","2400 SCFM","575V",68911],
+  ["SRD","SRD3000","3000 SCFM","460V",83866],
+  ["SRD","SRD3000","3000 SCFM","575V",86383],
+  ["SRD","SRD3800","3800 SCFM","460V",102430],
+  ["SRD","SRD3800","3800 SCFM","575V",104947],
+  ["SRD","SRD5000","5000 SCFM","460V",133339],
+  ["SRD","SRD5000","5000 SCFM","575V",136833],
+  ["SRD","SRD6000","6000 SCFM","460V",159869],
+  ["SRD","SRD6000","6000 SCFM","575V",163260],
+  // SRV — Variable Speed Cycling
+  ["SRV","SRV1000","1000 CFM","460V",40425],
+  ["SRV","SRV1250","1250 CFM","460V",46821],
+  ["SRV","SRV1500","1500 CFM","460V",56961],
+  // SRN — Non-Cycling (R513A refrigerant)
+  ["SRN","SRN10","10 SCFM","115V",2018],
+  ["SRN","SRN15","15 SCFM","115V",2205],
+  ["SRN","SRN25","25 SCFM","115V",2455],
+  ["SRN","SRN35","35 SCFM","115V",2829],
+  ["SRN","SRN50","50 SCFM","115V",3588],
+  ["SRN","SRN75","75 SCFM","115V",4316],
+  ["SRN","SRN75","75 SCFM","230V",4316],
+  ["SRN","SRN100","100 SCFM","115V",4847],
+  ["SRN","SRN100","100 SCFM","230V",4847],
+  ["SRN","SRN125","125 SCFM","115V",5200],
+  ["SRN","SRN125","125 SCFM","230V",5200],
+  ["SRN","SRN150","150 SCFM","115V",6064],
+  ["SRN","SRN150","150 SCFM","230V",6064],
+  ["SRN","SRN175","175 SCFM","115V",6937],
+  ["SRN","SRN175","175 SCFM","230V",6937],
+  ["SRN","SRN200","200 SCFM","230V",7468],
+  ["SRN","SRN250","250 SCFM","230V",8976],
+  ["SRN","SRN325","325 SCFM","460V",12470],
+  ["SRN","SRN325","325 SCFM","575V",14560],
+  ["SRN","SRN400","400 SCFM","460V",13968],
+  ["SRN","SRN400","400 SCFM","575V",16068],
+  ["SRN","SRN500","500 SCFM","460V",17119],
+  ["SRN","SRN500","500 SCFM","575V",19209],
+  ["SRN","SRN700","700 SCFM","460V",22121],
+  ["SRN","SRN700","700 SCFM","575V",24680],
+  ["SRN","SRN800","800 SCFM","460V",23515],
+  ["SRN","SRN800","800 SCFM","575V",26084],
+  ["SRN","SRN1000","1000 SCFM","460V",26084],
+  ["SRN","SRN1000","1000 SCFM","575V",28642],
+  ["SRN","SRN1400","1400 SCFM","460V",40748],
+  ["SRN","SRN1400","1400 SCFM","575V",43878],
+  ["SRN","SRN1600","1600 SCFM","460V",45168],
+  ["SRN","SRN1600","1600 SCFM","575V",48308],
+  ["SRN","SRN2000","2000 SCFM","460V",50638],
+  ["SRN","SRN2000","2000 SCFM","575V",54819],
+  ["SRN","SRN2400","2400 SCFM","460V",59083],
+  ["SRN","SRN2400","2400 SCFM","575V",64106],
+  ["SRN","SRN3000","3000 SCFM","460V",73820],
+  ["SRN","SRN3000","3000 SCFM","575V",78843],
+  ["SRN","SRN3800","3800 SCFM","460V",98936],
+  ["SRN","SRN3800","3800 SCFM","575V",103959],
+  ["SRN","SRN5000","5000 SCFM","460V",130385],
+  ["SRN","SRN5000","5000 SCFM","575V",137374],
+  ["SRN","SRN6000","6000 SCFM","460V",157363],
+  ["SRN","SRN6000","6000 SCFM","575V",164352],
+];
+
+// ============================================================
+// REGEN DRYER DATA  [series, modelCode, cfm_str, voltage, listPrice]
+// ============================================================
+const RAW_REGEN = [
+  // DMD — Modular Desiccant (115V)
+  ["DMD","DMD003","3 CFM","115V",3245],
+  ["DMD","DMD005","5 CFM","115V",3464],
+  ["DMD","DMD010","10 CFM","115V",4171],
+  ["DMD","DMD015","15 CFM","115V",4857],
+  ["DMD","DMD020","20 CFM","115V",5512],
+  ["DMD","DMD025","25 CFM","115V",5585],
+  ["DMD","DMD030","30 CFM","115V",5689],
+  ["DMD","DMD040","40 CFM","115V",5970],
+  ["DMD","DMD050","50 CFM","115V",6240],
+  ["DMD","DMD060","60 CFM","115V",6532],
+  ["DMD","DMD075","75 CFM","115V",7010],
+  ["DMD","DMD100","100 CFM","115V",14196],
+  ["DMD","DMD120","120 CFM","115V",15621],
+  ["DMD","DMD180","180 CFM","115V",16391],
+  ["DMD","DMD240","240 CFM","115V",21747],
+  // SA — Heatless Desiccant
+  ["SA","SA55","55 CFM","115V",13895],
+  ["SA","SA100","100 CFM","115V",18408],
+  ["SA","SA130","130 CFM","115V",19688],
+  ["SA","SA200","200 CFM","115V",22007],
+  ["SA","SA250","250 CFM","115V",24773],
+  ["SA","SA300","300 CFM","115V",25564],
+  ["SA","SA400","400 CFM","115V",27966],
+  ["SA","SA500","500 CFM","115V",32012],
+  ["SA","SA600","600 CFM","115V",38574],
+  ["SA","SA800","800 CFM","115V",46499],
+  ["SA","SA1000","1000 CFM","115V",65645],
+  ["SA","SA1200","1200 CFM","115V",72925],
+  ["SA","SA1500","1500 CFM","115V",96731],
+  ["SA","SA2000","2000 CFM","115V",114660],
+  ["SA","SA2600","2600 CFM","115V",130208],
+  ["SA","SA3000","3000 CFM","115V",136729],
+  // SAH — Heated Desiccant (460V / 575V)
+  ["SAH","SAH500","500 CFM","460V",65978],
+  ["SAH","SAH500","500 CFM","575V",66841],
+  ["SAH","SAH600","600 CFM","460V",71521],
+  ["SAH","SAH600","600 CFM","575V",72166],
+  ["SAH","SAH800","800 CFM","460V",80975],
+  ["SAH","SAH800","800 CFM","575V",82597],
+  ["SAH","SAH1000","1000 CFM","460V",94016],
+  ["SAH","SAH1000","1000 CFM","575V",95535],
+  ["SAH","SAH1200","1200 CFM","460V",99560],
+  ["SAH","SAH1200","1200 CFM","575V",100860],
+  ["SAH","SAH1500","1500 CFM","460V",131072],
+  ["SAH","SAH1500","1500 CFM","575V",131404],
+  ["SAH","SAH2000","2000 CFM","460V",152152],
+  ["SAH","SAH2000","2000 CFM","575V",151944],
+  ["SAH","SAH2600","2600 CFM","460V",171507],
+  ["SAH","SAH2600","2600 CFM","575V",170633],
+  ["SAH","SAH3000","3000 CFM","460V",193347],
+  ["SAH","SAH3000","3000 CFM","575V",191932],
+  // SAV — Variable Cycle Heated Desiccant (460V / 575V)
+  ["SAV","SAV500","500 CFM","460V",84771],
+  ["SAV","SAV500","500 CFM","575V",84989],
+  ["SAV","SAV600","600 CFM","460V",91084],
+  ["SAV","SAV600","600 CFM","575V",91406],
+  ["SAV","SAV800","800 CFM","460V",104884],
+  ["SAV","SAV800","800 CFM","575V",105529],
+  ["SAV","SAV1000","1000 CFM","460V",121400],
+  ["SAV","SAV1000","1000 CFM","575V",122055],
+  ["SAV","SAV1200","1200 CFM","460V",134660],
+  ["SAV","SAV1200","1200 CFM","575V",134878],
+  ["SAV","SAV1500","1500 CFM","460V",159661],
+  ["SAV","SAV1500","1500 CFM","575V",159110],
+  ["SAV","SAV2000","2000 CFM","460V",192588],
+  ["SAV","SAV2000","2000 CFM","575V",191173],
+  ["SAV","SAV2600","2600 CFM","460V",223673],
+  ["SAV","SAV2600","2600 CFM","575V",221500],
+  ["SAV","SAV3000","3000 CFM","460V",251493],
+  ["SAV","SAV3000","3000 CFM","575V",249101],
+  ["SAV","SAV4000","4000 CFM","460V",320934],
+  ["SAV","SAV4000","4000 CFM","575V",278336],
+  ["SAV","SAV5000","5000 CFM","460V",364188],
+  ["SAV","SAV5000","5000 CFM","575V",314528],
+  ["SAV","SAV6000","6000 CFM","460V",420275],
+  ["SAV","SAV6000","6000 CFM","575V",368431],
+  ["SAV","SAV7500","7500 CFM","460V",532751],
+  ["SAV","SAV7500","7500 CFM","575V",468198],
+];
+
+// ============================================================
+// REGEN DRYER SERIES CONFIG
+// ============================================================
+const REGEN_SERIES_CFG = {
+  "DMD": { pillClass:"pill-dmd", hdrClass:"hdr-dmd", label:"DMD", desc:"Modular Desiccant" },
+  "SA":  { pillClass:"pill-sa",  hdrClass:"hdr-sa",  label:"SA",  desc:"Heatless Desiccant" },
+  "SAH": { pillClass:"pill-sah", hdrClass:"hdr-sah", label:"SAH", desc:"Heated Desiccant" },
+  "SAV": { pillClass:"pill-sav", hdrClass:"hdr-sav", label:"SAV", desc:"Variable Cycle Heated" },
+};
+const REGEN_SERIES_ORDER = Object.keys(REGEN_SERIES_CFG);
+
+// ============================================================
+// COMPRESSOR SERIES CONFIG
+// ============================================================
+const SERIES_CFG = {
+  "LS Series":      { pillClass:"pill-ls",      hdrClass:"hdr-ls",      label:"LS" },
+  "LS20T (Hi-P)":   { pillClass:"pill-ls20t",   hdrClass:"hdr-ls20t",   label:"LS20T" },
+  "LS20TS (Hi-P)":  { pillClass:"pill-ls20ts",  hdrClass:"hdr-ls20ts",  label:"LS20TS" },
+  "S-energy":       { pillClass:"pill-senergy",  hdrClass:"hdr-senergy", label:"S-energy" },
+  "ES6":            { pillClass:"pill-es6",      hdrClass:"hdr-es6",     label:"ES6" },
+  "ShopTek":        { pillClass:"pill-shoptek",  hdrClass:"hdr-shoptek", label:"ShopTek" },
+  "SN":             { pillClass:"pill-sn",       hdrClass:"hdr-sn",      label:"SN" },
+  "TS":             { pillClass:"pill-ts",       hdrClass:"hdr-ts",      label:"TS" },
+  "TS32S":          { pillClass:"pill-ts32s",    hdrClass:"hdr-ts32s",   label:"TS32S" },
+  "V320TS":         { pillClass:"pill-v320ts",   hdrClass:"hdr-v320ts",  label:"V320TS" },
+};
+const SERIES_ORDER = Object.keys(SERIES_CFG);
+
+// ============================================================
+// DRYER SERIES CONFIG
+// ============================================================
+const DRY_SERIES_CFG = {
+  "SRN":   { pillClass:"pill-srn",   hdrClass:"hdr-srn",   label:"SRN",   desc:"Non-Cycling (R513A)" },
+  "SRC":   { pillClass:"pill-src",   hdrClass:"hdr-src",   label:"SRC",   desc:"Cycling (Sullimax)" },
+  "SRD":   { pillClass:"pill-srd",   hdrClass:"hdr-srd",   label:"SRD",   desc:"Cycling (R513A)" },
+  "SRV":   { pillClass:"pill-srv",   hdrClass:"hdr-srv",   label:"SRV",   desc:"Variable Speed" },
+};
+const DRY_SERIES_ORDER = Object.keys(DRY_SERIES_CFG);
+
+// ============================================================
+// HELPERS
+// ============================================================
+function getBase(series, code) {
+  if (series === "LS Series")
+    return code.replace(/(07|08|09|10|12|14)([SV]?)$/, '$2');
+  if (series === "TS")
+    return code.replace(/-(07|08|09|10|12|14)$/, '');
+  if (series === "SN")
+    return code.replace(/(07|08|09|10|12|14)([SV]?)$/, '$2');
+  if (series === "TS32S" || series === "V320TS")
+    return code.replace(/(HH|H|L)$/, '');
+  if (series === "ES6")
+    return code.replace(/(XH|H)$/, '');
+  return code;
+}
+
+function variantTag(base, series) {
+  if (["LS Series","TS","SN"].includes(series)) {
+    if (base.endsWith('V')) return '<span class="tag tag-v">Variable</span>';
+    if (base.endsWith('S')) return '<span class="tag tag-s">Star-Delta</span>';
+    return '<span class="tag tag-std">Standard</span>';
+  }
+  if (["LS20T (Hi-P)","LS20TS (Hi-P)"].includes(series))
+    return '<span class="tag tag-hi">Hi-Pressure</span>';
+  return '';
+}
+
+function drySeriesTag(series) {
+  const map = {
+    "SRN":   '<span class="tag tag-non">Non-Cycling</span>',
+    "SRC":   '<span class="tag tag-cyc">Cycling</span>',
+    "SRD":   '<span class="tag tag-cyc">Cycling</span>',
+    "SRV":   '<span class="tag tag-var">Variable</span>',
+  };
+  return map[series] || '';
+}
+
+function fmt$(n) {
+  return '$' + Math.round(n).toLocaleString('en-US');
+}
+
+function escHtml(s) {
+  return String(s).replace(/'/g, "\\'");
+}
+
+function getCurrentList() {
+  if (!selRow) return 0;
+  if (selProduct === 'dryer' || selProduct === 'regen') return selRow[4];
+  return selRow[5];
+}
+
+// ============================================================
+// STATE
+// ============================================================
+let selProduct = null;   // 'comp' | 'dryer' | 'regen'
+let selSeries  = null;
+let selBase    = null;
+let selRow     = null;
+
+// ============================================================
+// BUILD PRODUCT BAR
+// ============================================================
+function buildProductBar() {
+  const bar = document.getElementById('productBar');
+  bar.innerHTML = `
+    <div class="prod-pill prod-comp ${selProduct==='comp'?'active':''}" onclick="pickProduct('comp')">⚙️ Compressor</div>
+    <div class="prod-pill prod-dryer ${selProduct==='dryer'?'active':''}" onclick="pickProduct('dryer')">💧 Refrig. Dryer</div>
+    <div class="prod-pill prod-regen ${selProduct==='regen'?'active':''}" onclick="pickProduct('regen')">🔄 Regen. Dryer</div>
+  `;
+}
+
+// ============================================================
+// BUILD SERIES PILLS
+// ============================================================
+function buildPills() {
+  const bar = document.getElementById('seriesBar');
+  if (selProduct === 'comp') {
+    bar.innerHTML = SERIES_ORDER.map(s => {
+      const c = SERIES_CFG[s];
+      return `<div class="pill ${c.pillClass}${selSeries===s?' active':''}" data-series="${escHtml(s)}" onclick="pickSeries('${escHtml(s)}')">${c.label}</div>`;
+    }).join('');
+  } else if (selProduct === 'dryer') {
+    bar.innerHTML = DRY_SERIES_ORDER.map(s => {
+      const c = DRY_SERIES_CFG[s];
+      return `<div class="pill ${c.pillClass}${selSeries===s?' active':''}" data-series="${escHtml(s)}" onclick="pickSeries('${escHtml(s)}')">${c.label}</div>`;
+    }).join('');
+  } else if (selProduct === 'regen') {
+    bar.innerHTML = REGEN_SERIES_ORDER.map(s => {
+      const c = REGEN_SERIES_CFG[s];
+      return `<div class="pill ${c.pillClass}${selSeries===s?' active':''}" data-series="${escHtml(s)}" onclick="pickSeries('${escHtml(s)}')">${c.label}</div>`;
+    }).join('');
+  } else {
+    bar.innerHTML = '';
+  }
+}
+
+// ============================================================
+// BREADCRUMB
+// ============================================================
+function buildBreadcrumb() {
+  const el = document.getElementById('breadcrumb');
+  const parts = [];
+
+  if (!selProduct) {
+    el.innerHTML = '<span style="color:#4a6a9a;font-size:12px">Choose a product type above</span>';
+    return;
+  }
+
+  const prodLabel = selProduct === 'comp' ? 'Compressor' : selProduct === 'dryer' ? 'Refrig. Dryer' : 'Regen. Dryer';
+  const isAtProduct = !selSeries;
+  parts.push(`<span class="bc${isAtProduct?' current':''}" onclick="${isAtProduct?'':'showProductPicker()'}">${prodLabel}</span>`);
+
+  if (selSeries) {
+    parts.push(`<span class="bc-sep">›</span>`);
+    const isAtSeries = !selBase;
+    parts.push(`<span class="bc${isAtSeries?' current':''}" onclick="${isAtSeries?'':'pickSeries(\''+escHtml(selSeries)+'\')'}">${selSeries}</span>`);
+  }
+  if (selBase) {
+    parts.push(`<span class="bc-sep">›</span>`);
+    const isAtBase = !selRow;
+    const backFn = selProduct === 'dryer' ? `pickDryBase('${escHtml(selBase)}')` : `pickBase('${escHtml(selBase)}')`;
+    parts.push(`<span class="bc${isAtBase?' current':''}" onclick="${isAtBase?'':backFn}">${selBase}</span>`);
+  }
+  if (selRow) {
+    parts.push(`<span class="bc-sep">›</span>`);
+    const label = selProduct === 'dryer' ? selRow[3] : selRow[3];
+    parts.push(`<span class="bc current">${label}</span>`);
+  }
+
+  el.innerHTML = parts.join('');
+}
+
+// ============================================================
+// PICK PRODUCT TYPE
+// ============================================================
+function pickProduct(type) {
+  selProduct = type;
+  selSeries  = null;
+  selBase    = null;
+  selRow     = null;
+  buildProductBar();
+  buildPills();
+  buildBreadcrumb();
+  const label = type === 'comp' ? 'compressor series' : type === 'dryer' ? 'dryer series' : 'regen dryer series';
+  const legendHtml = type === 'comp' ? renderLegend() : type === 'dryer' ? renderDryLegend() : renderRegenLegend();
+  document.getElementById('content').innerHTML = `<div class="prompt">
+    <strong>Pick a ${label} to get started</strong>
+    Scroll the series bar above and tap your product line.
+  </div>${legendHtml}`;
+}
+
+function showProductPicker() {
+  selProduct = null;
+  selSeries  = null;
+  selBase    = null;
+  selRow     = null;
+  buildProductBar();
+  buildPills();
+  buildBreadcrumb();
+  document.getElementById('content').innerHTML = `
+    <div class="prod-picker-title">Select Product Type</div>
+    <div class="prod-card" onclick="pickProduct('comp')">
+      <div class="prod-icon prod-icon-comp">⚙️</div>
+      <div>
+        <div class="prod-card-title">Compressor</div>
+        <div class="prod-card-sub">LS, S-energy, ShopTek, TS, SN &amp; more</div>
+      </div>
+      <div class="prod-card-arrow">›</div>
+    </div>
+    <div class="prod-card" onclick="pickProduct('dryer')">
+      <div class="prod-icon prod-icon-dryer">💧</div>
+      <div>
+        <div class="prod-card-title">Refrigerated Dryer</div>
+        <div class="prod-card-sub">SRN, SRC, SRD, SRV</div>
+      </div>
+      <div class="prod-card-arrow">›</div>
+    </div>
+    <div class="prod-card" onclick="pickProduct('regen')">
+      <div class="prod-icon prod-icon-regen">🔄</div>
+      <div>
+        <div class="prod-card-title">Regenerative Dryer</div>
+        <div class="prod-card-sub">DMD, SA, SAH, SAV</div>
+      </div>
+      <div class="prod-card-arrow">›</div>
+    </div>`;
+}
+
+// ============================================================
+// PICK SERIES
+// ============================================================
+function pickSeries(s) {
+  selSeries = s;
+  selBase   = null;
+  selRow    = null;
+  document.querySelectorAll('#seriesBar .pill').forEach(p => {
+    p.classList.toggle('active', p.dataset.series === s);
+  });
+  buildBreadcrumb();
+  if (selProduct === 'dryer') {
+    renderDryModels();
+  } else if (selProduct === 'regen') {
+    renderRegenModels();
+  } else {
+    renderModels();
+  }
+}
+
+// ============================================================
+// COMPRESSOR: RENDER MODEL LIST
+// ============================================================
+function renderModels() {
+  const seen = new Map();
+  for (const row of RAW) {
+    if (row[0] !== selSeries) continue;
+    const base = getBase(selSeries, row[1]);
+    if (!seen.has(base)) seen.set(base, row[2]);
+  }
+  const models = [...seen.entries()];
+
+  let html = `<div class="step-label">Step 1 — Choose Model</div><div class="model-list">`;
+  for (const [base, hp] of models) {
+    const vtag = variantTag(base, selSeries);
+    html += `<div class="model-btn" onclick="pickBase('${escHtml(base)}')">
+      <div class="model-left">
+        <div class="model-name">${base}</div>
+        <div class="model-sub">${hp} HP</div>
+      </div>
+      <div class="model-tags">${vtag}<span class="model-arrow">›</span></div>
+    </div>`;
+  }
+  html += `</div>`;
+  html += renderLegend();
+  document.getElementById('content').innerHTML = html;
+  window.scrollTo(0, 0);
+}
+
+// ============================================================
+// COMPRESSOR: PICK BASE MODEL → pressure grid
+// ============================================================
+function pickBase(base) {
+  selBase = base;
+  selRow  = null;
+  buildBreadcrumb();
+
+  const rows = RAW.filter(r => r[0] === selSeries && getBase(selSeries, r[1]) === base);
+  if (rows.length === 1) { pickRow(rows[0]); return; }
+
+  let html = `<div class="step-label">Step 2 — Choose Pressure</div><div class="pres-grid">`;
+  for (const row of rows) {
+    const cfmStr = row[4] ? `${row[4]} CFM` : '';
+    html += `<div class="pres-btn" onclick="pickRowByCode('${escHtml(row[1])}')">
+      <div class="pres-psi">${row[3]}</div>
+      ${cfmStr ? `<div class="pres-cfm">${cfmStr}</div>` : ''}
+    </div>`;
+  }
+  html += `</div>`;
+  html += renderLegend();
+  document.getElementById('content').innerHTML = html;
+  window.scrollTo(0, 0);
+}
+
+function pickRowByCode(code) {
+  const row = RAW.find(r => r[0] === selSeries && r[1] === code);
+  if (row) pickRow(row);
+}
+
+// ============================================================
+// DRYER: RENDER MODEL LIST
+// ============================================================
+function renderDryModels() {
+  const seen = new Map(); // modelCode → cfm_str
+  for (const row of RAW_DRY) {
+    if (row[0] !== selSeries) continue;
+    if (!seen.has(row[1])) seen.set(row[1], row[2]);
+  }
+  const models = [...seen.entries()]; // [[code, cfm_str], ...]
+
+  const stag = drySeriesTag(selSeries);
+  let html = `<div class="step-label">Step 1 — Choose Model</div><div class="model-list">`;
+  for (const [code, cfmStr] of models) {
+    html += `<div class="model-btn" onclick="pickDryBase('${escHtml(code)}')">
+      <div class="model-left">
+        <div class="model-name">${code}</div>
+        <div class="model-sub">${cfmStr}</div>
+      </div>
+      <div class="model-tags">${stag}<span class="model-arrow">›</span></div>
+    </div>`;
+  }
+  html += `</div>`;
+  html += renderDryLegend();
+  document.getElementById('content').innerHTML = html;
+  window.scrollTo(0, 0);
+}
+
+// ============================================================
+// DRYER: PICK MODEL → voltage grid (or skip if only one)
+// ============================================================
+function pickDryBase(code) {
+  selBase = code;
+  selRow  = null;
+  buildBreadcrumb();
+
+  const rows = RAW_DRY.filter(r => r[0] === selSeries && r[1] === code);
+  if (rows.length === 1) { pickRow(rows[0]); return; }
+
+  const cfg = DRY_SERIES_CFG[selSeries] || {};
+  let html = `<div class="step-label">Step 2 — Choose Voltage</div>
+    <div style="font-size:12px;color:#888;margin-bottom:10px;padding:0 2px">${code} · ${rows[0][2]}</div>
+    <div class="volt-grid">`;
+  for (const row of rows) {
+    html += `<div class="volt-btn" onclick="pickDryRow('${escHtml(row[1])}','${escHtml(row[3])}')">
+      <div class="volt-v">${row[3]}</div>
+      <div class="volt-list">${fmt$(row[4])}</div>
+    </div>`;
+  }
+  html += `</div>`;
+  html += renderDryLegend();
+  document.getElementById('content').innerHTML = html;
+  window.scrollTo(0, 0);
+}
+
+function pickDryRow(code, voltage) {
+  const row = RAW_DRY.find(r => r[0] === selSeries && r[1] === code && r[3] === voltage);
+  if (row) pickRow(row);
+}
+
+// ============================================================
+// PICK ROW (shared for both product types)
+// ============================================================
+function pickRow(row) {
+  selRow = row;
+  buildBreadcrumb();
+  if (selProduct === 'dryer') {
+    renderDryResult();
+  } else if (selProduct === 'regen') {
+    renderRegenResult();
+  } else {
+    renderResult();
+  }
+}
+
+// ============================================================
+// COMPRESSOR: RENDER RESULT
+// ============================================================
+function renderResult() {
+  if (!selRow) return;
+  const [series, code, hp, psi, cfm, list] = selRow;
+  const cfg = SERIES_CFG[series] || { hdrClass: 'hdr-ts' };
+  const margin = parseFloat(document.getElementById('marginInput').value) || 0;
+  const cost = list * 0.47;
+  const sell = margin >= 100 ? 0 : cost / (1 - margin / 100);
+  const cfmStr = cfm ? `${cfm} CFM  ·  ` : '';
+
+  let html = `<div class="result-wrap">
+    <div class="result-card">
+      <div class="r-header ${cfg.hdrClass}">
+        <div class="r-code">${code}</div>
+        <div class="r-sub">${series}  ·  ${hp} HP  ·  ${psi}  ·  ${cfmStr}List&nbsp;${fmt$(list)}</div>
+      </div>
+      <div class="r-prices">
+        <div class="r-col">
+          <div class="r-lbl">Your Cost</div>
+          <div class="r-amt amt-cost" id="rCost">${fmt$(cost)}</div>
+          <div style="font-size:10px;color:#bbb;margin-top:3px">list × 47%</div>
+        </div>
+        <div class="r-col">
+          <div class="r-lbl">Sell Price</div>
+          <div class="r-amt amt-sell" id="rSell">${fmt$(sell)}</div>
+          <div style="font-size:10px;color:#bbb;margin-top:3px" id="rMarginLbl">at ${margin}% margin</div>
+        </div>
+      </div>
+      <div class="r-footer">
+        <span>Sell = Cost ÷ (1 − margin)</span>
+        <span style="color:#555;font-weight:600">Cost: ${fmt$(cost)}</span>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:14px">
+      <div onclick="pickBase(selBase)" style="display:inline-block;padding:10px 22px;background:#e8f0fe;border-radius:20px;color:#3a52a0;font-size:14px;font-weight:700;cursor:pointer;">← Change Pressure</div>
+    </div>
+  </div>`;
+  html += renderLegend();
+  document.getElementById('content').innerHTML = html;
+  window.scrollTo(0, 0);
+}
+
+// ============================================================
+// DRYER: RENDER RESULT
+// ============================================================
+function renderDryResult() {
+  if (!selRow) return;
+  const [series, code, cfmStr, voltage, list] = selRow;
+  const cfg = DRY_SERIES_CFG[series] || { hdrClass: 'hdr-srn' };
+  const margin = parseFloat(document.getElementById('marginInput').value) || 0;
+  const cost = list * 0.47;
+  const sell = margin >= 100 ? 0 : cost / (1 - margin / 100);
+
+  // Determine back button
+  const voltages = RAW_DRY.filter(r => r[0] === series && r[1] === code);
+  const hasMultiVolt = voltages.length > 1;
+  const backLabel = hasMultiVolt ? '← Change Voltage' : '← Change Model';
+  const backFn    = hasMultiVolt ? `pickDryBase('${escHtml(code)}')` : `pickSeries('${escHtml(series)}')`;
+
+  let html = `<div class="result-wrap">
+    <div class="result-card">
+      <div class="r-header ${cfg.hdrClass}">
+        <div class="r-code">${code}</div>
+        <div class="r-sub">${series}  ·  ${cfmStr}  ·  ${voltage}  ·  List&nbsp;${fmt$(list)}</div>
+      </div>
+      <div class="r-prices">
+        <div class="r-col">
+          <div class="r-lbl">Your Cost</div>
+          <div class="r-amt amt-cost" id="rCost">${fmt$(cost)}</div>
+          <div style="font-size:10px;color:#bbb;margin-top:3px">list × 47%</div>
+        </div>
+        <div class="r-col">
+          <div class="r-lbl">Sell Price</div>
+          <div class="r-amt amt-sell" id="rSell">${fmt$(sell)}</div>
+          <div style="font-size:10px;color:#bbb;margin-top:3px" id="rMarginLbl">at ${margin}% margin</div>
+        </div>
+      </div>
+      <div class="r-footer">
+        <span>Sell = Cost ÷ (1 − margin)</span>
+        <span style="color:#555;font-weight:600">Cost: ${fmt$(cost)}</span>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:14px">
+      <div onclick="${backFn}" style="display:inline-block;padding:10px 22px;background:#e0f7f0;border-radius:20px;color:#065f46;font-size:14px;font-weight:700;cursor:pointer;">${backLabel}</div>
+    </div>
+  </div>`;
+  html += renderDryLegend();
+  document.getElementById('content').innerHTML = html;
+  window.scrollTo(0, 0);
+}
+
+// ============================================================
+// UPDATE SELL when margin changes
+// ============================================================
+function updateSell() {
+  if (!selRow) return;
+  const list = getCurrentList();
+  const margin = parseFloat(document.getElementById('marginInput').value) || 0;
+  const cost = list * 0.47;
+  const sell = margin >= 100 ? 0 : cost / (1 - margin / 100);
+  const sellEl = document.getElementById('rSell');
+  const costEl = document.getElementById('rCost');
+  const lbl    = document.getElementById('rMarginLbl');
+  if (sellEl) sellEl.textContent = fmt$(sell);
+  if (costEl) costEl.textContent = fmt$(cost);
+  if (lbl)    lbl.textContent    = `at ${margin}% margin`;
+}
+
+// ============================================================
+// REGEN: SERIES TAG
+// ============================================================
+function regenSeriesTag(series) {
+  const map = {
+    "DMD": '<span class="tag tag-modular">Modular</span>',
+    "SA":  '<span class="tag tag-heatless">Heatless</span>',
+    "SAH": '<span class="tag tag-heated">Heated</span>',
+    "SAV": '<span class="tag tag-varcy">Variable</span>',
+  };
+  return map[series] || '';
+}
+
+// ============================================================
+// REGEN: RENDER MODEL LIST
+// ============================================================
+function renderRegenModels() {
+  const seen = new Map(); // modelCode → cfm_str
+  for (const row of RAW_REGEN) {
+    if (row[0] !== selSeries) continue;
+    if (!seen.has(row[1])) seen.set(row[1], row[2]);
+  }
+  const models = [...seen.entries()];
+
+  const stag = regenSeriesTag(selSeries);
+  let html = `<div class="step-label">Step 1 — Choose Model</div><div class="model-list">`;
+  for (const [code, cfmStr] of models) {
+    html += `<div class="model-btn" onclick="pickRegenBase('${escHtml(code)}')">
+      <div class="model-left">
+        <div class="model-name">${code}</div>
+        <div class="model-sub">${cfmStr}</div>
+      </div>
+      <div class="model-tags">${stag}<span class="model-arrow">›</span></div>
+    </div>`;
+  }
+  html += `</div>`;
+  html += renderRegenLegend();
+  document.getElementById('content').innerHTML = html;
+  window.scrollTo(0, 0);
+}
+
+// ============================================================
+// REGEN: PICK MODEL → voltage grid (or skip if only one)
+// ============================================================
+function pickRegenBase(code) {
+  selBase = code;
+  selRow  = null;
+  buildBreadcrumb();
+
+  const rows = RAW_REGEN.filter(r => r[0] === selSeries && r[1] === code);
+  if (rows.length === 1) { pickRow(rows[0]); return; }
+
+  let html = `<div class="step-label">Step 2 — Choose Voltage</div>
+    <div style="font-size:12px;color:#888;margin-bottom:10px;padding:0 2px">${code} · ${rows[0][2]}</div>
+    <div class="volt-grid">`;
+  for (const row of rows) {
+    html += `<div class="volt-btn" onclick="pickRegenRow('${escHtml(row[1])}','${escHtml(row[3])}')">
+      <div class="volt-v">${row[3]}</div>
+      <div class="volt-list">${fmt$(row[4])}</div>
+    </div>`;
+  }
+  html += `</div>`;
+  html += renderRegenLegend();
+  document.getElementById('content').innerHTML = html;
+  window.scrollTo(0, 0);
+}
+
+function pickRegenRow(code, voltage) {
+  const row = RAW_REGEN.find(r => r[0] === selSeries && r[1] === code && r[3] === voltage);
+  if (row) pickRow(row);
+}
+
+// ============================================================
+// REGEN: RENDER RESULT
+// ============================================================
+function renderRegenResult() {
+  if (!selRow) return;
+  const [series, code, cfmStr, voltage, list] = selRow;
+  const cfg = REGEN_SERIES_CFG[series] || { hdrClass: 'hdr-sa' };
+  const margin = parseFloat(document.getElementById('marginInput').value) || 0;
+  const cost = list * 0.47;
+  const sell = margin >= 100 ? 0 : cost / (1 - margin / 100);
+
+  const voltages = RAW_REGEN.filter(r => r[0] === series && r[1] === code);
+  const hasMultiVolt = voltages.length > 1;
+  const backLabel = hasMultiVolt ? '← Change Voltage' : '← Change Model';
+  const backFn    = hasMultiVolt ? `pickRegenBase('${escHtml(code)}')` : `pickSeries('${escHtml(series)}')`;
+
+  let html = `<div class="result-wrap">
+    <div class="result-card">
+      <div class="r-header ${cfg.hdrClass}">
+        <div class="r-code">${code}</div>
+        <div class="r-sub">${series}  ·  ${cfmStr}  ·  ${voltage}  ·  List&nbsp;${fmt$(list)}</div>
+      </div>
+      <div class="r-prices">
+        <div class="r-col">
+          <div class="r-lbl">Your Cost</div>
+          <div class="r-amt amt-cost" id="rCost">${fmt$(cost)}</div>
+          <div style="font-size:10px;color:#bbb;margin-top:3px">list × 47%</div>
+        </div>
+        <div class="r-col">
+          <div class="r-lbl">Sell Price</div>
+          <div class="r-amt amt-sell" id="rSell">${fmt$(sell)}</div>
+          <div style="font-size:10px;color:#bbb;margin-top:3px" id="rMarginLbl">at ${margin}% margin</div>
+        </div>
+      </div>
+      <div class="r-footer">
+        <span>Sell = Cost ÷ (1 − margin)</span>
+        <span style="color:#555;font-weight:600">Cost: ${fmt$(cost)}</span>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:14px">
+      <div onclick="${backFn}" style="display:inline-block;padding:10px 22px;background:#ede9fe;border-radius:20px;color:#5b21b6;font-size:14px;font-weight:700;cursor:pointer;">${backLabel}</div>
+    </div>
+  </div>`;
+  html += renderRegenLegend();
+  document.getElementById('content').innerHTML = html;
+  window.scrollTo(0, 0);
+}
+
+// ============================================================
+// LEGENDS
+// ============================================================
+function renderLegend() {
+  return `<div class="legend">
+    <div class="legend-title">Bar Code Reference</div>
+    <div class="bar-ref">
+      <div class="bar-chip">07 = 100 psi</div>
+      <div class="bar-chip">08 = 110 psi</div>
+      <div class="bar-chip">09 = 125 psi</div>
+      <div class="bar-chip">10 = 150 psi</div>
+      <div class="bar-chip">12 = 175 psi</div>
+      <div class="bar-chip">14 = 200 psi</div>
+    </div>
+    <p>TS32S / V320TS: <b>L</b>=100 psi · <b>H</b>=125 psi · <b>HH</b>=150 psi<br>
+       ES6: <b>H</b>=125 psi · <b>XH</b>=175 psi<br>
+       <span style="color:#bbb;font-size:10px">Source: MySullair Pricesheets Feb 2026 · Prices subject to change</span></p>
+  </div>`;
+}
+
+function renderDryLegend() {
+  return `<div class="legend">
+    <div class="legend-title">Dryer Series Guide</div>
+    <div class="bar-ref">
+      <div class="bar-chip">SRN = Non-Cycling R513A</div>
+      <div class="bar-chip">SRC = Cycling</div>
+      <div class="bar-chip">SRD = Cycling R513A</div>
+      <div class="bar-chip">SRV = Variable Speed</div>
+    </div>
+    <p><span style="color:#bbb;font-size:10px">Source: MySullair Pricesheets Feb 2026 · Prices subject to change</span></p>
+  </div>`;
+}
+
+function renderRegenLegend() {
+  return `<div class="legend">
+    <div class="legend-title">Regen Dryer Series Guide</div>
+    <div class="bar-ref">
+      <div class="bar-chip">DMD = Modular Desiccant</div>
+      <div class="bar-chip">SA = Heatless Desiccant</div>
+      <div class="bar-chip">SAH = Heated Desiccant</div>
+      <div class="bar-chip">SAV = Variable Cycle Heated</div>
+    </div>
+    <p><span style="color:#bbb;font-size:10px">Source: MySullair Pricesheets Feb 2026 · Prices subject to change</span></p>
+  </div>`;
+}
+
+// ============================================================
+// INIT
+// ============================================================
+function init() {
+  buildProductBar();
+  buildBreadcrumb();
+  showProductPicker();
+}
+
+init();
+</script>
+</body>
+</html>
