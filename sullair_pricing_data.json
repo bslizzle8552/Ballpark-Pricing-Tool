@@ -1,0 +1,2396 @@
+[
+  {
+    "series": "LS",
+    "model": "LS110",
+    "pressure_code": "08",
+    "pressure_psi": 110,
+    "base_price": 167727.0,
+    "pages": "1-1",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS110",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 167727.0,
+    "pages": "1-1",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS110",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 167727.0,
+    "pages": "1-1",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS110",
+    "pressure_code": "12",
+    "pressure_psi": 175,
+    "base_price": 169559.0,
+    "pages": "1-1",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS110S",
+    "pressure_code": "08",
+    "pressure_psi": 110,
+    "base_price": 185470.0,
+    "pages": "2-3",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS110S",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 185470.0,
+    "pages": "2-3",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS110S",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 185470.0,
+    "pages": "2-3",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS110S",
+    "pressure_code": "12",
+    "pressure_psi": 175,
+    "base_price": 187302.0,
+    "pages": "2-3",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS110V",
+    "pressure_code": "08",
+    "pressure_psi": 110,
+    "base_price": 209976.0,
+    "pages": "4-4",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS110V",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 209976.0,
+    "pages": "4-4",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS110V",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 209976.0,
+    "pages": "4-4",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS110V",
+    "pressure_code": "12",
+    "pressure_psi": 175,
+    "base_price": 211808.0,
+    "pages": "4-4",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS160",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 203107.0,
+    "pages": "5-6",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS160",
+    "pressure_code": "08",
+    "pressure_psi": 110,
+    "base_price": 203107.0,
+    "pages": "5-6",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS160",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 203107.0,
+    "pages": "5-6",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS160",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 203107.0,
+    "pages": "5-6",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS160",
+    "pressure_code": "14",
+    "pressure_psi": 200,
+    "base_price": 206994.0,
+    "pages": "5-6",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS160S",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 210892.0,
+    "pages": "7-8",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS160S",
+    "pressure_code": "08",
+    "pressure_psi": 110,
+    "base_price": 210892.0,
+    "pages": "7-8",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS160S",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 210892.0,
+    "pages": "7-8",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS160S",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 210892.0,
+    "pages": "7-8",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS160S",
+    "pressure_code": "14",
+    "pressure_psi": 200,
+    "base_price": 214555.0,
+    "pages": "7-8",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS160V",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 259094.0,
+    "pages": "9-10",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS160V",
+    "pressure_code": "08",
+    "pressure_psi": 110,
+    "base_price": 259094.0,
+    "pages": "9-10",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS160V",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 259094.0,
+    "pages": "9-10",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS160V",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 259094.0,
+    "pages": "9-10",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS160V",
+    "pressure_code": "14",
+    "pressure_psi": 200,
+    "base_price": 262523.0,
+    "pages": "9-10",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS190",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 245238.0,
+    "pages": "11-13",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS190",
+    "pressure_code": "08",
+    "pressure_psi": 110,
+    "base_price": 245238.0,
+    "pages": "11-13",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS190",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 245238.0,
+    "pages": "11-13",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS190",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 245238.0,
+    "pages": "11-13",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS190",
+    "pressure_code": "14",
+    "pressure_psi": 200,
+    "base_price": 249040.0,
+    "pages": "11-13",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS190S",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 259552.0,
+    "pages": "14-15",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS190S",
+    "pressure_code": "08",
+    "pressure_psi": 110,
+    "base_price": 259552.0,
+    "pages": "14-15",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS190S",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 259552.0,
+    "pages": "14-15",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS190S",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 259552.0,
+    "pages": "14-15",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS190S",
+    "pressure_code": "14",
+    "pressure_psi": 200,
+    "base_price": 263354.0,
+    "pages": "14-15",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS190V",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 339171.0,
+    "pages": "16-17",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS190V",
+    "pressure_code": "08",
+    "pressure_psi": 110,
+    "base_price": 339171.0,
+    "pages": "16-17",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS190V",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 339171.0,
+    "pages": "16-17",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS190V",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 339171.0,
+    "pages": "16-17",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS190V",
+    "pressure_code": "14",
+    "pressure_psi": 200,
+    "base_price": 342749.0,
+    "pages": "16-17",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS220",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 287732.0,
+    "pages": "18-19",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS220",
+    "pressure_code": "08",
+    "pressure_psi": 110,
+    "base_price": 287732.0,
+    "pages": "18-19",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS220",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 287732.0,
+    "pages": "18-19",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS220",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 287732.0,
+    "pages": "18-19",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS220",
+    "pressure_code": "14",
+    "pressure_psi": 200,
+    "base_price": 291534.0,
+    "pages": "18-19",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS220S",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 306848.0,
+    "pages": "20-22",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS220S",
+    "pressure_code": "08",
+    "pressure_psi": 110,
+    "base_price": 306848.0,
+    "pages": "20-22",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS220S",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 306848.0,
+    "pages": "20-22",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS220S",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 306848.0,
+    "pages": "20-22",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS220S",
+    "pressure_code": "14",
+    "pressure_psi": 200,
+    "base_price": 310991.0,
+    "pages": "20-22",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS220V",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 380099.0,
+    "pages": "23-23",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS220V",
+    "pressure_code": "08",
+    "pressure_psi": 110,
+    "base_price": 380099.0,
+    "pages": "23-23",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS220V",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 380099.0,
+    "pages": "23-23",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS220V",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 380099.0,
+    "pages": "23-23",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS220V",
+    "pressure_code": "14",
+    "pressure_psi": 200,
+    "base_price": 383784.0,
+    "pages": "23-23",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS260",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 331673.0,
+    "pages": "24-26",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS260",
+    "pressure_code": "08",
+    "pressure_psi": 110,
+    "base_price": 331673.0,
+    "pages": "24-26",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS260",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 331673.0,
+    "pages": "24-26",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS260",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 331673.0,
+    "pages": "24-26",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS260",
+    "pressure_code": "14",
+    "pressure_psi": 200,
+    "base_price": 335593.0,
+    "pages": "24-26",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS260S",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 355604.0,
+    "pages": "27-28",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS260S",
+    "pressure_code": "08",
+    "pressure_psi": 110,
+    "base_price": 355604.0,
+    "pages": "27-28",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS260S",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 355604.0,
+    "pages": "27-28",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS260S",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 355604.0,
+    "pages": "27-28",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS260S",
+    "pressure_code": "14",
+    "pressure_psi": 200,
+    "base_price": 359523.0,
+    "pages": "27-28",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS260V",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 425500.0,
+    "pages": "29-30",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS260V",
+    "pressure_code": "08",
+    "pressure_psi": 110,
+    "base_price": 425500.0,
+    "pages": "29-30",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS260V",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 425500.0,
+    "pages": "29-30",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS260V",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 425500.0,
+    "pages": "29-30",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS260V",
+    "pressure_code": "14",
+    "pressure_psi": 200,
+    "base_price": 429302.0,
+    "pages": "29-30",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS90",
+    "pressure_code": "08",
+    "pressure_psi": 110,
+    "base_price": 140943.0,
+    "pages": "31-32",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS90",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 140943.0,
+    "pages": "31-32",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS90",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 140943.0,
+    "pages": "31-32",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS90",
+    "pressure_code": "12",
+    "pressure_psi": 175,
+    "base_price": 142774.0,
+    "pages": "31-32",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS90S",
+    "pressure_code": "08",
+    "pressure_psi": 110,
+    "base_price": 163606.0,
+    "pages": "33-34",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS90S",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 163606.0,
+    "pages": "33-34",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS90S",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 163606.0,
+    "pages": "33-34",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS90S",
+    "pressure_code": "12",
+    "pressure_psi": 175,
+    "base_price": 165438.0,
+    "pages": "33-34",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS90V",
+    "pressure_code": "08",
+    "pressure_psi": 110,
+    "base_price": 184554.0,
+    "pages": "35-35",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS90V",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 184554.0,
+    "pages": "35-35",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS90V",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 184554.0,
+    "pages": "35-35",
+    "notes": ""
+  },
+  {
+    "series": "LS",
+    "model": "LS90V",
+    "pressure_code": "12",
+    "pressure_psi": 175,
+    "base_price": 186503.0,
+    "pages": "35-35",
+    "notes": ""
+  },
+  {
+    "series": "LS20T",
+    "model": "200",
+    "pressure_code": "225",
+    "pressure_psi": 225,
+    "base_price": 374800.0,
+    "pages": "36-36",
+    "notes": ""
+  },
+  {
+    "series": "LS20T",
+    "model": "200",
+    "pressure_code": "250",
+    "pressure_psi": 250,
+    "base_price": 374800.0,
+    "pages": "36-36",
+    "notes": ""
+  },
+  {
+    "series": "LS20T",
+    "model": "200",
+    "pressure_code": "350",
+    "pressure_psi": 350,
+    "base_price": 374800.0,
+    "pages": "36-36",
+    "notes": ""
+  },
+  {
+    "series": "LS20T",
+    "model": "250",
+    "pressure_code": "250",
+    "pressure_psi": 250,
+    "base_price": 416370.0,
+    "pages": "37-38",
+    "notes": ""
+  },
+  {
+    "series": "LS20T",
+    "model": "250",
+    "pressure_code": "350",
+    "pressure_psi": 350,
+    "base_price": 416370.0,
+    "pages": "37-38",
+    "notes": ""
+  },
+  {
+    "series": "LS20T",
+    "model": "250",
+    "pressure_code": "500",
+    "pressure_psi": 500,
+    "base_price": 423453.0,
+    "pages": "37-38",
+    "notes": ""
+  },
+  {
+    "series": "LS20T",
+    "model": "300",
+    "pressure_code": "350",
+    "pressure_psi": 350,
+    "base_price": 423902.0,
+    "pages": "39-39",
+    "notes": ""
+  },
+  {
+    "series": "LS20T",
+    "model": "300",
+    "pressure_code": "500",
+    "pressure_psi": 500,
+    "base_price": 430975.0,
+    "pages": "39-39",
+    "notes": ""
+  },
+  {
+    "series": "LS20T",
+    "model": "350",
+    "pressure_code": "500",
+    "pressure_psi": 500,
+    "base_price": 436486.0,
+    "pages": "40-40",
+    "notes": ""
+  },
+  {
+    "series": "LS20TS",
+    "model": "300",
+    "pressure_code": "225",
+    "pressure_psi": 225,
+    "base_price": 463899.0,
+    "pages": "41-42",
+    "notes": ""
+  },
+  {
+    "series": "LS20TS",
+    "model": "350",
+    "pressure_code": "225",
+    "pressure_psi": 225,
+    "base_price": 474460.0,
+    "pages": "43-43",
+    "notes": ""
+  },
+  {
+    "series": "LS20TS",
+    "model": "350",
+    "pressure_code": "300",
+    "pressure_psi": 300,
+    "base_price": 474460.0,
+    "pages": "43-43",
+    "notes": ""
+  },
+  {
+    "series": "LS20TS",
+    "model": "350",
+    "pressure_code": "350",
+    "pressure_psi": 350,
+    "base_price": 474460.0,
+    "pages": "43-43",
+    "notes": ""
+  },
+  {
+    "series": "LS20TS",
+    "model": "400",
+    "pressure_code": "225",
+    "pressure_psi": 225,
+    "base_price": 540853.0,
+    "pages": "44-45",
+    "notes": ""
+  },
+  {
+    "series": "LS20TS",
+    "model": "450",
+    "pressure_code": "225",
+    "pressure_psi": 225,
+    "base_price": 639165.0,
+    "pages": "46-46",
+    "notes": ""
+  },
+  {
+    "series": "LS20TS",
+    "model": "450",
+    "pressure_code": "300",
+    "pressure_psi": 300,
+    "base_price": 639165.0,
+    "pages": "46-46",
+    "notes": ""
+  },
+  {
+    "series": "LS20TS",
+    "model": "500",
+    "pressure_code": "300",
+    "pressure_psi": 300,
+    "base_price": 653203.0,
+    "pages": "47-47",
+    "notes": ""
+  },
+  {
+    "series": "LS20TS",
+    "model": "500",
+    "pressure_code": "350",
+    "pressure_psi": 350,
+    "base_price": 653203.0,
+    "pages": "47-47",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "1100e",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 32002.0,
+    "pages": "48-49",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "1100e",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 32002.0,
+    "pages": "48-49",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "1100e",
+    "pressure_code": "12",
+    "pressure_psi": 175,
+    "base_price": 35002.0,
+    "pages": "48-49",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "1100eV",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 43068.0,
+    "pages": "50-50",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "1100eV",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 43068.0,
+    "pages": "50-50",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "1100eV",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 43068.0,
+    "pages": "50-50",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "1100eV",
+    "pressure_code": "12",
+    "pressure_psi": 175,
+    "base_price": 43068.0,
+    "pages": "50-50",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "1500e",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 34758.0,
+    "pages": "51-52",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "1500e",
+    "pressure_code": "12",
+    "pressure_psi": 175,
+    "base_price": 37599.0,
+    "pages": "51-52",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "1500eV",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 43376.0,
+    "pages": "53-53",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "1500eV",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 43376.0,
+    "pages": "53-53",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "1500eV",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 43376.0,
+    "pages": "53-53",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "1500eV",
+    "pressure_code": "12",
+    "pressure_psi": 175,
+    "base_price": 46238.0,
+    "pages": "53-53",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "1800",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 42051.0,
+    "pages": "54-55",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "1800",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 42051.0,
+    "pages": "54-55",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "1800",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 42051.0,
+    "pages": "54-55",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "1800",
+    "pressure_code": "12",
+    "pressure_psi": 175,
+    "base_price": 44860.0,
+    "pages": "54-55",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "1800e",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 36390.0,
+    "pages": "56-56",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "1800e",
+    "pressure_code": "12",
+    "pressure_psi": 175,
+    "base_price": 39295.0,
+    "pages": "56-56",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "1800eV",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 47202.0,
+    "pages": "57-58",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "1800eV",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 47202.0,
+    "pages": "57-58",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "1800eV",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 47202.0,
+    "pages": "57-58",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "1800eV",
+    "pressure_code": "12",
+    "pressure_psi": 175,
+    "base_price": 50054.0,
+    "pages": "57-58",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "1800V",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 56159.0,
+    "pages": "59-60",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "1800V",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 56159.0,
+    "pages": "59-60",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "1800V",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 56159.0,
+    "pages": "59-60",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "1800V",
+    "pressure_code": "12",
+    "pressure_psi": 175,
+    "base_price": 59032.0,
+    "pages": "59-60",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "2200",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 44584.0,
+    "pages": "61-61",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "2200",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 44584.0,
+    "pages": "61-61",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "2200",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 44584.0,
+    "pages": "61-61",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "2200",
+    "pressure_code": "12",
+    "pressure_psi": 175,
+    "base_price": 47351.0,
+    "pages": "61-61",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "2200V",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 61767.0,
+    "pages": "62-63",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "2200V",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 61767.0,
+    "pages": "62-63",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "2200V",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 61767.0,
+    "pages": "62-63",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "2200V",
+    "pressure_code": "12",
+    "pressure_psi": 175,
+    "base_price": 64618.0,
+    "pages": "62-63",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "3000",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 48941.0,
+    "pages": "64-64",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "3000",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 48941.0,
+    "pages": "64-64",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "3000",
+    "pressure_code": "12",
+    "pressure_psi": 175,
+    "base_price": 51739.0,
+    "pages": "64-64",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "3000PB",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 53626.0,
+    "pages": "65-66",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "3000PB",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 53626.0,
+    "pages": "65-66",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "3000PB",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 53626.0,
+    "pages": "65-66",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "3000PVB",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 74985.0,
+    "pages": "67-68",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "3000PVB",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 74985.0,
+    "pages": "67-68",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "3000PVB",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 74985.0,
+    "pages": "67-68",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "3000V",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 65296.0,
+    "pages": "69-69",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "3000V",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 65296.0,
+    "pages": "69-69",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "3000V",
+    "pressure_code": "12",
+    "pressure_psi": 175,
+    "base_price": 68148.0,
+    "pages": "69-69",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "3700B",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 58004.0,
+    "pages": "70-71",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "3700B",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 58004.0,
+    "pages": "70-71",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "3700B",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 58004.0,
+    "pages": "70-71",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "3700B",
+    "pressure_code": "12",
+    "pressure_psi": 175,
+    "base_price": 60855.0,
+    "pages": "70-71",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "3700VB",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 83528.0,
+    "pages": "72-73",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "3700VB",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 83528.0,
+    "pages": "72-73",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "3700VB",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 83528.0,
+    "pages": "72-73",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "3700VB",
+    "pressure_code": "12",
+    "pressure_psi": 175,
+    "base_price": 86263.0,
+    "pages": "72-73",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "4500B",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 65296.0,
+    "pages": "74-74",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "4500B",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 65296.0,
+    "pages": "74-74",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "4500B",
+    "pressure_code": "12",
+    "pressure_psi": 175,
+    "base_price": 68148.0,
+    "pages": "74-74",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "4500VB",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 94584.0,
+    "pages": "75-76",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "4500VB",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 94584.0,
+    "pages": "75-76",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "4500VB",
+    "pressure_code": "12",
+    "pressure_psi": 175,
+    "base_price": 97436.0,
+    "pages": "75-76",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "ES6-10",
+    "pressure_code": "H",
+    "pressure_psi": 125,
+    "base_price": 22822.0,
+    "pages": "77-77",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "ES6-10",
+    "pressure_code": "XH",
+    "pressure_psi": 175,
+    "base_price": 22822.0,
+    "pages": "77-77",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "ES6-5",
+    "pressure_code": "H",
+    "pressure_psi": 125,
+    "base_price": 19006.0,
+    "pages": "78-79",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "ES6-5",
+    "pressure_code": "XH",
+    "pressure_psi": 175,
+    "base_price": 19006.0,
+    "pages": "78-79",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "ES6-7.5",
+    "pressure_code": "H",
+    "pressure_psi": 125,
+    "base_price": 20151.0,
+    "pages": "80-80",
+    "notes": ""
+  },
+  {
+    "series": "S-energy",
+    "model": "ES6-7.5",
+    "pressure_code": "XH",
+    "pressure_psi": 175,
+    "base_price": 20151.0,
+    "pages": "80-80",
+    "notes": ""
+  },
+  {
+    "series": "ShopTek",
+    "model": "ST11",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 18608.0,
+    "pages": "81-81",
+    "notes": ""
+  },
+  {
+    "series": "ShopTek",
+    "model": "ST15",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": NaN,
+    "pages": "82-82",
+    "notes": "Base price not parsed; verify block"
+  },
+  {
+    "series": "ShopTek",
+    "model": "ST18",
+    "pressure_code": "08",
+    "pressure_psi": 115,
+    "base_price": NaN,
+    "pages": "83-83",
+    "notes": "Base price not parsed; verify block"
+  },
+  {
+    "series": "ShopTek",
+    "model": "ST22",
+    "pressure_code": "08",
+    "pressure_psi": 115,
+    "base_price": 31405.0,
+    "pages": "84-84",
+    "notes": ""
+  },
+  {
+    "series": "ShopTek",
+    "model": "ST30",
+    "pressure_code": "08",
+    "pressure_psi": 115,
+    "base_price": 39858.0,
+    "pages": "85-85",
+    "notes": ""
+  },
+  {
+    "series": "ShopTek",
+    "model": "ST37",
+    "pressure_code": "08",
+    "pressure_psi": 115,
+    "base_price": NaN,
+    "pages": "86-86",
+    "notes": "Base price not parsed; verify block"
+  },
+  {
+    "series": "ShopTek",
+    "model": "ST4",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 13054.0,
+    "pages": "87-87",
+    "notes": ""
+  },
+  {
+    "series": "ShopTek",
+    "model": "ST45",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 55319.0,
+    "pages": "88-88",
+    "notes": ""
+  },
+  {
+    "series": "ShopTek",
+    "model": "ST5",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 14017.0,
+    "pages": "89-89",
+    "notes": ""
+  },
+  {
+    "series": "ShopTek",
+    "model": "ST55",
+    "pressure_code": "",
+    "pressure_psi": "",
+    "base_price": NaN,
+    "pages": "90-89",
+    "notes": "No config details found"
+  },
+  {
+    "series": "ShopTek",
+    "model": "ST7",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 72225.0,
+    "pages": "90-91",
+    "notes": ""
+  },
+  {
+    "series": "ShopTek",
+    "model": "ST75",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 82615.0,
+    "pages": "92-97",
+    "notes": ""
+  },
+  {
+    "series": "SN",
+    "model": "5500",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 87077.0,
+    "pages": "98-98",
+    "notes": ""
+  },
+  {
+    "series": "SN",
+    "model": "5500",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 87077.0,
+    "pages": "98-98",
+    "notes": ""
+  },
+  {
+    "series": "SN",
+    "model": "5500",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 87077.0,
+    "pages": "98-98",
+    "notes": ""
+  },
+  {
+    "series": "SN",
+    "model": "5500",
+    "pressure_code": "12",
+    "pressure_psi": 175,
+    "base_price": 90073.0,
+    "pages": "98-98",
+    "notes": ""
+  },
+  {
+    "series": "SN",
+    "model": "5500S",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 95134.0,
+    "pages": "99-100",
+    "notes": ""
+  },
+  {
+    "series": "SN",
+    "model": "5500S",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 95134.0,
+    "pages": "99-100",
+    "notes": ""
+  },
+  {
+    "series": "SN",
+    "model": "5500V",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 107782.0,
+    "pages": "101-102",
+    "notes": ""
+  },
+  {
+    "series": "SN",
+    "model": "5500V",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 107782.0,
+    "pages": "101-102",
+    "notes": ""
+  },
+  {
+    "series": "SN",
+    "model": "5500V",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 107782.0,
+    "pages": "101-102",
+    "notes": ""
+  },
+  {
+    "series": "SN",
+    "model": "5500V",
+    "pressure_code": "12",
+    "pressure_psi": 175,
+    "base_price": 110542.0,
+    "pages": "101-102",
+    "notes": ""
+  },
+  {
+    "series": "SN",
+    "model": "7500",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 95134.0,
+    "pages": "103-104",
+    "notes": ""
+  },
+  {
+    "series": "SN",
+    "model": "7500",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 95134.0,
+    "pages": "103-104",
+    "notes": ""
+  },
+  {
+    "series": "SN",
+    "model": "7500",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 95134.0,
+    "pages": "103-104",
+    "notes": ""
+  },
+  {
+    "series": "SN",
+    "model": "7500",
+    "pressure_code": "12",
+    "pressure_psi": 175,
+    "base_price": NaN,
+    "pages": "103-104",
+    "notes": "Base price not parsed; verify block"
+  },
+  {
+    "series": "SN",
+    "model": "7500S",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 106519.0,
+    "pages": "105-106",
+    "notes": ""
+  },
+  {
+    "series": "SN",
+    "model": "7500S",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 106519.0,
+    "pages": "105-106",
+    "notes": ""
+  },
+  {
+    "series": "SN",
+    "model": "7500S",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 106519.0,
+    "pages": "105-106",
+    "notes": ""
+  },
+  {
+    "series": "SN",
+    "model": "7500S",
+    "pressure_code": "12",
+    "pressure_psi": 175,
+    "base_price": 107664.0,
+    "pages": "105-106",
+    "notes": ""
+  },
+  {
+    "series": "SN",
+    "model": "7500V",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 135965.0,
+    "pages": "107-107",
+    "notes": ""
+  },
+  {
+    "series": "SN",
+    "model": "7500V",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 135965.0,
+    "pages": "107-107",
+    "notes": ""
+  },
+  {
+    "series": "SN",
+    "model": "7500V",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 135965.0,
+    "pages": "107-107",
+    "notes": ""
+  },
+  {
+    "series": "SN",
+    "model": "7500V",
+    "pressure_code": "12",
+    "pressure_psi": 175,
+    "base_price": 138491.0,
+    "pages": "107-107",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS190",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 306965.0,
+    "pages": "108-110",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS190",
+    "pressure_code": "08",
+    "pressure_psi": 110,
+    "base_price": 306965.0,
+    "pages": "108-110",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS190",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 306965.0,
+    "pages": "108-110",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS190",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 306965.0,
+    "pages": "108-110",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS190",
+    "pressure_code": "14",
+    "pressure_psi": 200,
+    "base_price": 310767.0,
+    "pages": "108-110",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS190S",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 331450.0,
+    "pages": "111-112",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS190S",
+    "pressure_code": "08",
+    "pressure_psi": 110,
+    "base_price": 331450.0,
+    "pages": "111-112",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS190S",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 331450.0,
+    "pages": "111-112",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS190S",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 331450.0,
+    "pages": "111-112",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS190S",
+    "pressure_code": "14",
+    "pressure_psi": 200,
+    "base_price": 335252.0,
+    "pages": "111-112",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS190V",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 398768.0,
+    "pages": "113-114",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS190V",
+    "pressure_code": "08",
+    "pressure_psi": 110,
+    "base_price": 398768.0,
+    "pages": "113-114",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS190V",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 398768.0,
+    "pages": "113-114",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS190V",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 398768.0,
+    "pages": "113-114",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS190V",
+    "pressure_code": "14",
+    "pressure_psi": 200,
+    "base_price": 402688.0,
+    "pages": "113-114",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS220",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 340513.0,
+    "pages": "115-116",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS220",
+    "pressure_code": "08",
+    "pressure_psi": 110,
+    "base_price": 340513.0,
+    "pages": "115-116",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS220",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 340513.0,
+    "pages": "115-116",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS220",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 340513.0,
+    "pages": "115-116",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS220",
+    "pressure_code": "14",
+    "pressure_psi": 200,
+    "base_price": 344315.0,
+    "pages": "115-116",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS220S",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 368916.0,
+    "pages": "117-118",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS220S",
+    "pressure_code": "08",
+    "pressure_psi": 110,
+    "base_price": 368916.0,
+    "pages": "117-118",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS220S",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 368916.0,
+    "pages": "117-118",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS220S",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 368916.0,
+    "pages": "117-118",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS220S",
+    "pressure_code": "14",
+    "pressure_psi": 200,
+    "base_price": 368916.0,
+    "pages": "117-118",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS220V",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 445852.0,
+    "pages": "119-120",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS220V",
+    "pressure_code": "08",
+    "pressure_psi": 110,
+    "base_price": 445852.0,
+    "pages": "119-120",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS220V",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 445852.0,
+    "pages": "119-120",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS220V",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 445852.0,
+    "pages": "119-120",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS220V",
+    "pressure_code": "14",
+    "pressure_psi": 200,
+    "base_price": 449761.0,
+    "pages": "119-120",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS260",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 373049.0,
+    "pages": "121-122",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS260",
+    "pressure_code": "08",
+    "pressure_psi": 110,
+    "base_price": 373049.0,
+    "pages": "121-122",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS260",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 373049.0,
+    "pages": "121-122",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS260",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 373049.0,
+    "pages": "121-122",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS260",
+    "pressure_code": "14",
+    "pressure_psi": 200,
+    "base_price": 376851.0,
+    "pages": "121-122",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS260S",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 397650.0,
+    "pages": "123-125",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS260S",
+    "pressure_code": "08",
+    "pressure_psi": 110,
+    "base_price": 397650.0,
+    "pages": "123-125",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS260S",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 397650.0,
+    "pages": "123-125",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS260S",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 397650.0,
+    "pages": "123-125",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS260S",
+    "pressure_code": "14",
+    "pressure_psi": 200,
+    "base_price": 401452.0,
+    "pages": "123-125",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS260V",
+    "pressure_code": "07",
+    "pressure_psi": 100,
+    "base_price": 483649.0,
+    "pages": "126-126",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS260V",
+    "pressure_code": "08",
+    "pressure_psi": 110,
+    "base_price": 483649.0,
+    "pages": "126-126",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS260V",
+    "pressure_code": "09",
+    "pressure_psi": 125,
+    "base_price": 483649.0,
+    "pages": "126-126",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS260V",
+    "pressure_code": "10",
+    "pressure_psi": 150,
+    "base_price": 483649.0,
+    "pages": "126-126",
+    "notes": ""
+  },
+  {
+    "series": "TS",
+    "model": "TS260V",
+    "pressure_code": "14",
+    "pressure_psi": 200,
+    "base_price": 487451.0,
+    "pages": "126-126",
+    "notes": ""
+  },
+  {
+    "series": "TS32S",
+    "model": "400",
+    "pressure_code": "H",
+    "pressure_psi": 125,
+    "base_price": 482656.0,
+    "pages": "127-128",
+    "notes": ""
+  },
+  {
+    "series": "TS32S",
+    "model": "400",
+    "pressure_code": "HH",
+    "pressure_psi": 150,
+    "base_price": 482656.0,
+    "pages": "127-128",
+    "notes": ""
+  },
+  {
+    "series": "TS32S",
+    "model": "400",
+    "pressure_code": "L",
+    "pressure_psi": 100,
+    "base_price": 482656.0,
+    "pages": "127-128",
+    "notes": ""
+  },
+  {
+    "series": "TS32S",
+    "model": "450",
+    "pressure_code": "H",
+    "pressure_psi": 125,
+    "base_price": 530185.0,
+    "pages": "129-130",
+    "notes": ""
+  },
+  {
+    "series": "TS32S",
+    "model": "450",
+    "pressure_code": "HH",
+    "pressure_psi": 150,
+    "base_price": 530185.0,
+    "pages": "129-130",
+    "notes": ""
+  },
+  {
+    "series": "TS32S",
+    "model": "450",
+    "pressure_code": "L",
+    "pressure_psi": 100,
+    "base_price": 530185.0,
+    "pages": "129-130",
+    "notes": ""
+  },
+  {
+    "series": "TS32S",
+    "model": "500BaseUnitIncludes",
+    "pressure_code": "H",
+    "pressure_psi": 125,
+    "base_price": 685560.0,
+    "pages": "131-132",
+    "notes": ""
+  },
+  {
+    "series": "TS32S",
+    "model": "500BaseUnitIncludes",
+    "pressure_code": "HH",
+    "pressure_psi": 150,
+    "base_price": 685560.0,
+    "pages": "131-132",
+    "notes": ""
+  },
+  {
+    "series": "TS32S",
+    "model": "500BaseUnitIncludes",
+    "pressure_code": "L",
+    "pressure_psi": 100,
+    "base_price": 685560.0,
+    "pages": "131-132",
+    "notes": ""
+  },
+  {
+    "series": "TS32S",
+    "model": "600BaseUnitIncludes",
+    "pressure_code": "H",
+    "pressure_psi": 125,
+    "base_price": 803752.0,
+    "pages": "133-133",
+    "notes": ""
+  },
+  {
+    "series": "TS32S",
+    "model": "600BaseUnitIncludes",
+    "pressure_code": "HH",
+    "pressure_psi": 150,
+    "base_price": 803752.0,
+    "pages": "133-133",
+    "notes": ""
+  },
+  {
+    "series": "TS32S",
+    "model": "600BaseUnitIncludes",
+    "pressure_code": "L",
+    "pressure_psi": 100,
+    "base_price": 803752.0,
+    "pages": "133-133",
+    "notes": ""
+  },
+  {
+    "series": "V320TS",
+    "model": "400",
+    "pressure_code": "H",
+    "pressure_psi": 125,
+    "base_price": 656242.0,
+    "pages": "134-134",
+    "notes": ""
+  },
+  {
+    "series": "V320TS",
+    "model": "400",
+    "pressure_code": "HH",
+    "pressure_psi": 150,
+    "base_price": 656242.0,
+    "pages": "134-134",
+    "notes": ""
+  },
+  {
+    "series": "V320TS",
+    "model": "400",
+    "pressure_code": "L",
+    "pressure_psi": 100,
+    "base_price": 656242.0,
+    "pages": "134-134",
+    "notes": ""
+  },
+  {
+    "series": "V320TS",
+    "model": "450",
+    "pressure_code": "H",
+    "pressure_psi": 125,
+    "base_price": 680617.0,
+    "pages": "135-137",
+    "notes": ""
+  },
+  {
+    "series": "V320TS",
+    "model": "450",
+    "pressure_code": "HH",
+    "pressure_psi": 150,
+    "base_price": 680617.0,
+    "pages": "135-137",
+    "notes": ""
+  },
+  {
+    "series": "V320TS",
+    "model": "450",
+    "pressure_code": "L",
+    "pressure_psi": 100,
+    "base_price": 680617.0,
+    "pages": "135-137",
+    "notes": ""
+  }
+]
